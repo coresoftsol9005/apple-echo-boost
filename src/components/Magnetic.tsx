@@ -12,7 +12,7 @@ type Props = {
  * Magnetic hover — element is gently pulled toward the cursor.
  * Apple-style microinteraction for primary CTAs.
  */
-export function Magnetic({ children, className = "", strength = 14 }: Props) {
+export function Magnetic({ children, className = "", strength = 7 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
