@@ -473,7 +473,7 @@
   color: oklch(0.98 0.005 240);
 }
 @media (min-width: 768px) {
-  .apple-tile { padding: 80px 40px 0; }
+  .apple-tile { padding: 80px 40px 80px; }
 }
 .apple-eyebrow {
   font-family: var(--font-display);
