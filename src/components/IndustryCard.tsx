@@ -19,7 +19,7 @@ export function IndustryCard({ icon: Icon, title, power, image, tone = "light" }
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className="h-full"
     >
-      <article className={`apple-tile ${tone === "dark" ? "is-dark" : ""} h-full min-h-[480px] md:min-h-[560px]`}>
+      <article className={`apple-tile ${tone === "dark" ? "is-dark" : ""} h-full`}>
         <div className="apple-eyebrow inline-flex items-center gap-2">
           <Icon className="h-3.5 w-3.5" aria-hidden />
           {title}

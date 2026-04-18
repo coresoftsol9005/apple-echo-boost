@@ -301,7 +301,7 @@ function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="apple-tile min-h-[420px] md:min-h-[520px]"
+          className="apple-tile"
         >
           <div className="apple-eyebrow">The Hook</div>
           <h2 className="apple-headline">
@@ -359,7 +359,7 @@ function Industries() {
           transition={{ duration: 0.7 }}
           className="h-full"
         >
-          <article className="apple-tile h-full min-h-[480px] md:min-h-[560px]">
+          <article className="apple-tile h-full">
             <div className="apple-eyebrow">Every Other Business</div>
             <h3 className="apple-headline max-w-[420px]">
               Built for you. Whatever you do.
@@ -412,7 +412,7 @@ function FreeTrial() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="apple-tile is-dark min-h-[600px] md:min-h-[680px]"
+          className="apple-tile is-dark"
         >
           <div className="apple-eyebrow inline-flex items-center gap-2">
             <Gift className="h-3.5 w-3.5" aria-hidden />
@@ -605,7 +605,7 @@ function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="apple-tile h-full min-h-[480px] md:min-h-[560px]"
+          className="apple-tile h-full"
         >
           <div className="apple-eyebrow">About CoreSoft</div>
           <h2 className="apple-headline max-w-[460px]">
@@ -639,7 +639,7 @@ function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="apple-tile is-dark h-full min-h-[480px] md:min-h-[560px]"
+          className="apple-tile is-dark h-full"
         >
           <div className="apple-eyebrow">What we stand for</div>
           <h2 className="apple-headline">
@@ -692,7 +692,7 @@ function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="apple-tile is-dark min-h-[420px] md:min-h-[500px]"
+          className="apple-tile is-dark"
         >
           <div className="apple-eyebrow">Client Results</div>
           <h2 className="apple-headline">
