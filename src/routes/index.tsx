@@ -523,6 +523,65 @@ function TrustRow({ label, value }: { label: string; value: string }) {
   );
 }
 
+function SpotsTicker({ claimed, total }: { claimed: number; total: number }) {
+  const left = Math.max(total - claimed, 0);
+  const pct = Math.min(100, (claimed / total) * 100);
+  const monthName = new Date().toLocaleString("en-US", { month: "long" });
+
+  const computeRemaining = () => {
+    const now = new Date();
+    const end = new Date(now.getFullYear(), now.getMonth() + 1, 1).getTime();
+    const diff = Math.max(end - now.getTime(), 0);
+    const days = Math.floor(diff / 86_400_000);
+    const hours = Math.floor((diff % 86_400_000) / 3_600_000);
+    const mins = Math.floor((diff % 3_600_000) / 60_000);
+    const secs = Math.floor((diff % 60_000) / 1000);
+    return { days, hours, mins, secs };
+  };
+
+  const [t, setT] = useState(computeRemaining);
+  useEffect(() => {
+    const id = setInterval(() => setT(computeRemaining()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const pad = (n: number) => n.toString().padStart(2, "0");
+
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3.5">
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inset-0 animate-ping rounded-full bg-signal opacity-70" />
+            <span className="relative h-2 w-2 rounded-full bg-signal" />
+          </span>
+          <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-skyblue/70">
+            {monthName} spots
+          </span>
+        </div>
+        <span className="font-mono-brand text-[11px] text-white">
+          <span className="text-signal">{left}</span>
+          <span className="text-skyblue/50"> / {total} left</span>
+        </span>
+      </div>
+
+      <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-signal to-signal/60 transition-all duration-700"
+          style={{ width: `${pct}%` }}
+        />
+      </div>
+
+      <div className="mt-3 flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-skyblue/60">
+        <span>Window closes in</span>
+        <span className="font-mono-brand text-white">
+          {t.days}d <span className="text-skyblue/40">·</span> {pad(t.hours)}:{pad(t.mins)}:{pad(t.secs)}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 /* ───────────────── ABOUT ───────────────── */
 function About() {
   const values = [
