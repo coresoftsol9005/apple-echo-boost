@@ -544,12 +544,22 @@ function SpotsTicker({ total, daysPerSpot = 6 }: { total: number; daysPerSpot?: 
         secs: Math.floor((diff % 60_000) / 1000),
       };
     };
+    const computeClaimed = () => {
+      const now = new Date();
+      // Day-of-month based decay: 1 spot consumed per `daysPerSpot` days, max total-1 (always leave 1).
+      const decayed = Math.floor((now.getDate() - 1) / daysPerSpot);
+      return Math.min(decayed, total - 1);
+    };
     setMonthName(new Date().toLocaleString("en-US", { month: "long" }));
     setT(compute());
+    setClaimed(computeClaimed());
     setMounted(true);
-    const id = setInterval(() => setT(compute()), 1000);
+    const id = setInterval(() => {
+      setT(compute());
+      setClaimed(computeClaimed());
+    }, 1000);
     return () => clearInterval(id);
-  }, []);
+  }, [daysPerSpot, total]);
 
   const pad = (n: number) => n.toString().padStart(2, "0");
 
