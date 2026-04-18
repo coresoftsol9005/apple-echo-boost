@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Toaster } from "sonner";
 import { UtensilsCrossed, Stethoscope, Scissors, ArrowRight, Instagram, Facebook } from "lucide-react";
 
@@ -8,6 +9,8 @@ import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { IndustryCard } from "@/components/IndustryCard";
 import { LeadForm } from "@/components/LeadForm";
 import { CoreSoftLogo } from "@/components/CoreSoftLogo";
+import { Tilt3D } from "@/components/Tilt3D";
+import { Magnetic } from "@/components/Magnetic";
 
 import heroLaptop from "@/assets/hero-laptop.jpg";
 import deviceRestaurant from "@/assets/device-restaurant.jpg";
@@ -55,12 +58,23 @@ function Index() {
 
 /* ───────────────── HERO ───────────────── */
 function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const spring = { stiffness: 100, damping: 22, mass: 0.6 };
+  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.5], [18, 0]), spring);
+  const scale = useSpring(useTransform(scrollYProgress, [0, 0.4], [0.94, 1]), spring);
+  const lift = useSpring(useTransform(scrollYProgress, [0, 0.5], [80, 0]), spring);
+  const orbY = useTransform(scrollYProgress, [0, 1], [0, -120]);
+
   return (
-    <section className="relative overflow-hidden bg-midnight pt-28 text-white md:pt-36">
-      <div className="pointer-events-none absolute inset-0 opacity-60" aria-hidden>
+    <section ref={heroRef} className="relative overflow-hidden bg-midnight pt-28 text-white md:pt-36">
+      <motion.div className="pointer-events-none absolute inset-0 opacity-60" style={{ y: orbY }} aria-hidden>
         <div className="absolute -top-40 left-1/2 h-[600px] w-[1100px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(13,71,161,0.55),transparent)]" />
         <div className="absolute right-[-200px] top-40 h-[400px] w-[400px] rounded-full bg-[radial-gradient(closest-side,rgba(229,57,53,0.18),transparent)]" />
-      </div>
+      </motion.div>
 
       <div className="relative mx-auto max-w-6xl px-5 text-center md:px-8">
         <motion.div
@@ -101,34 +115,44 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.3 }}
           className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full bg-signal px-7 py-3.5 text-[14px] font-semibold text-white transition hover:brightness-110"
-          >
-            Get a free audit <ArrowRight className="h-4 w-4" />
-          </a>
-          <a
-            href="#industries"
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-[14px] font-semibold text-white transition hover:bg-white/10"
-          >
-            See what we build
-          </a>
+          <Magnetic>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full bg-signal px-7 py-3.5 text-[14px] font-semibold text-white shadow-[0_20px_50px_-15px_rgba(229,57,53,0.6)] transition hover:brightness-110"
+            >
+              Get a free audit <ArrowRight className="h-4 w-4" />
+            </a>
+          </Magnetic>
+          <Magnetic strength={8}>
+            <a
+              href="#industries"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-[14px] font-semibold text-white transition hover:bg-white/10"
+            >
+              See what we build
+            </a>
+          </Magnetic>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.1, delay: 0.4 }}
           className="relative mx-auto mt-16 w-full max-w-5xl"
+          style={{ perspective: 1400 }}
         >
-          <div className="absolute inset-x-10 -bottom-4 h-20 rounded-full bg-signal/20 blur-3xl" aria-hidden />
-          <img
-            src={heroLaptop}
-            alt="MacBook displaying CoreSoft business dashboard"
-            width={1920}
-            height={1080}
-            className="relative mx-auto w-full rounded-[28px] shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)]"
-          />
+          <motion.div
+            style={{ rotateX, scale, y: lift, transformStyle: "preserve-3d", transformOrigin: "50% 100%" }}
+            className="relative will-change-transform"
+          >
+            <div className="absolute inset-x-10 -bottom-4 h-20 rounded-full bg-signal/30 blur-3xl" aria-hidden />
+            <img
+              src={heroLaptop}
+              alt="MacBook displaying CoreSoft business dashboard"
+              width={1920}
+              height={1080}
+              className="relative mx-auto w-full rounded-[28px] shadow-[0_60px_140px_-30px_rgba(0,0,0,0.8)]"
+            />
+          </motion.div>
         </motion.div>
       </div>
     </section>
