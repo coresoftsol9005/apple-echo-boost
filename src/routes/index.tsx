@@ -122,15 +122,16 @@ function Hero() {
           <Magnetic>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-signal px-7 py-3.5 text-[14px] font-semibold text-white shadow-[0_20px_50px_-15px_rgba(229,57,53,0.6)] transition hover:brightness-110"
+              className="btn-lift group inline-flex items-center gap-2 rounded-full bg-signal px-7 py-3.5 text-[14px] font-semibold text-white shadow-[0_20px_50px_-15px_rgba(229,57,53,0.6)]"
             >
-              Get a free audit <ArrowRight className="h-4 w-4" />
+              Get a free audit
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </Magnetic>
           <Magnetic strength={4}>
             <a
               href="#industries"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-[14px] font-semibold text-white transition hover:bg-white/10"
+              className="btn-lift inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-[14px] font-semibold text-white hover:bg-white/10"
             >
               See what we build
             </a>
@@ -276,10 +277,11 @@ function Industries() {
                 <Magnetic>
                   <a
                     href="#contact"
-                    className="mt-8 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 text-[13px] font-semibold uppercase tracking-wider text-white transition hover:brightness-110"
+                    className="btn-lift group mt-8 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 text-[13px] font-semibold uppercase tracking-wider text-white"
                     style={{ transform: "translateZ(20px)" }}
                   >
-                    Talk to us <ArrowRight className="h-4 w-4" />
+                    Talk to us
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                 </Magnetic>
               </div>
@@ -421,7 +423,7 @@ function SocialIcon({ href, label, children }: { href: string; label: string; ch
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition hover:border-signal hover:bg-signal hover:text-white"
+      className="btn-lift inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 hover:border-signal hover:bg-signal hover:text-white"
     >
       {children}
     </a>
