@@ -5,11 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * CoreSoft Solutions — Apple-aesthetic design system.
- * Brand palette derived from logo: Deep Navy, Signal Red, Midnight, Light Blue.
+ * CoreSoft Solutions — Brand Design System
+ * Dark, premium, navy + red. DM Sans body, Syne display, DM Mono accents.
  */
 
 @theme inline {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", "DM Sans", sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -36,137 +40,243 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
 
-  /* CoreSoft brand tokens */
   --color-navy: var(--navy);
-  --color-navy-deep: var(--navy-deep);
-  --color-midnight: var(--midnight);
-  --color-signal: var(--signal);
-  --color-signal-deep: var(--signal-deep);
-  --color-skyblue: var(--skyblue);
-  --color-slate-soft: var(--slate-soft);
-  --color-snow: var(--snow);
+  --color-navy-mid: var(--navy-mid);
+  --color-red-brand: var(--red-brand);
+  --color-red-brand-dk: var(--red-brand-dk);
+  --color-light-blue: var(--light-blue);
+  --color-text-dim: var(--text-dim);
+  --color-text-mid: var(--text-mid);
 
-  --font-display: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: 'Newsreader', 'New York', 'Times New Roman', serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  /* Legacy aliases — keep older components compiling against the new palette */
+  --color-midnight: var(--navy-dk);
+  --color-navy-deep: var(--navy);
+  --color-signal: var(--red-brand);
+  --color-signal-deep: var(--red-brand-dk);
+  --color-skyblue: var(--light-blue);
+  --color-slate-soft: var(--text-dim);
+  --color-snow: oklch(0.985 0.003 240);
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.625rem;
 
-  /* Brand — oklch */
-  --navy: oklch(0.38 0.16 264);          /* #0D47A1 */
-  --navy-deep: oklch(0.30 0.14 264);     /* #0A3578 */
-  --midnight: oklch(0.18 0.04 254);      /* #0A1628 */
-  --signal: oklch(0.62 0.22 27);         /* #E53935 */
-  --signal-deep: oklch(0.50 0.20 27);    /* #B71C1C */
-  --skyblue: oklch(0.84 0.08 245);       /* #90CAF9 */
-  --slate-soft: oklch(0.55 0.04 254);    /* #546E8A */
-  --snow: oklch(0.985 0.003 240);        /* #F7F9FC */
+  /* Brand palette */
+  --navy: oklch(0.42 0.17 264);
+  --navy-mid: oklch(0.52 0.17 264);
+  --navy-dk: oklch(0.18 0.05 260);
+  --red-brand: oklch(0.62 0.22 27);
+  --red-brand-dk: oklch(0.48 0.21 27);
+  --light-blue: oklch(0.85 0.08 240);
 
-  /* Semantic — Apple light */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.16 0.02 264);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.16 0.02 264);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0.02 264);
-  --primary: var(--navy);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.97 0.005 250);
-  --secondary-foreground: var(--navy);
-  --muted: oklch(0.96 0.005 250);
-  --muted-foreground: var(--slate-soft);
-  --accent: var(--signal);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: var(--signal);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.92 0.01 250);
-  --input: oklch(0.94 0.01 250);
-  --ring: var(--navy);
+  /* Surfaces (dark by default — CoreSoft is a dark brand) */
+  --background: oklch(0.18 0.05 260);
+  --foreground: oklch(0.98 0.005 240);
 
-  --shadow-elegant: 0 30px 80px -30px color-mix(in oklab, var(--navy) 35%, transparent);
-  --shadow-glass: 0 20px 60px -20px color-mix(in oklab, var(--midnight) 50%, transparent);
-  --gradient-midnight: radial-gradient(ellipse at top, oklch(0.22 0.06 254) 0%, var(--midnight) 60%);
-  --gradient-signal: linear-gradient(135deg, var(--signal) 0%, var(--signal-deep) 100%);
-}
+  --card: oklch(0.22 0.05 260);
+  --card-foreground: oklch(0.98 0.005 240);
+  --popover: oklch(0.22 0.05 260);
+  --popover-foreground: oklch(0.98 0.005 240);
 
-.dark {
-  --background: var(--midnight);
-  --foreground: oklch(0.98 0.003 250);
-  --card: oklch(0.22 0.04 254);
-  --card-foreground: oklch(0.98 0.003 250);
-  --popover: oklch(0.22 0.04 254);
-  --popover-foreground: oklch(0.98 0.003 250);
-  --primary: oklch(0.98 0.003 250);
-  --primary-foreground: var(--midnight);
-  --secondary: oklch(0.26 0.04 254);
-  --secondary-foreground: oklch(0.98 0.003 250);
-  --muted: oklch(0.26 0.04 254);
-  --muted-foreground: var(--skyblue);
-  --accent: var(--signal);
-  --accent-foreground: oklch(1 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: var(--skyblue);
+  --primary: oklch(0.62 0.22 27);
+  --primary-foreground: oklch(0.98 0.005 240);
+
+  --secondary: oklch(0.42 0.17 264);
+  --secondary-foreground: oklch(0.98 0.005 240);
+
+  --muted: oklch(0.28 0.04 260);
+  --muted-foreground: oklch(0.72 0.02 250);
+
+  --accent: oklch(0.42 0.17 264);
+  --accent-foreground: oklch(0.98 0.005 240);
+
+  --destructive: oklch(0.62 0.22 27);
+  --destructive-foreground: oklch(0.98 0.005 240);
+
+  --border: oklch(0.85 0.08 240 / 0.15);
+  --input: oklch(0.85 0.08 240 / 0.18);
+  --ring: oklch(0.62 0.22 27);
+
+  --text-dim: oklch(1 0 0 / 0.55);
+  --text-mid: oklch(1 0 0 / 0.8);
+
+  /* Gradients & shadows */
+  --gradient-hero: radial-gradient(
+      ellipse at top,
+      oklch(0.42 0.17 264 / 0.35) 0%,
+      transparent 60%
+    ),
+    linear-gradient(180deg, oklch(0.18 0.05 260) 0%, oklch(0.14 0.04 260) 100%);
+  --gradient-red: linear-gradient(
+    135deg,
+    oklch(0.62 0.22 27) 0%,
+    oklch(0.48 0.21 27) 100%
+  );
+  --gradient-navy: linear-gradient(
+    135deg,
+    oklch(0.52 0.17 264) 0%,
+    oklch(0.32 0.13 264) 100%
+  );
+  --shadow-red: 0 20px 60px -20px oklch(0.62 0.22 27 / 0.5);
+  --shadow-card: 0 10px 40px -10px oklch(0 0 0 / 0.4);
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+  }
 
   html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-display);
-    font-feature-settings: "ss01", "cv11";
-    letter-spacing: -0.011em;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "ss02";
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
   }
 
-  h1, h2, h3 {
-    letter-spacing: -0.04em;
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
     font-weight: 700;
   }
 
   ::selection {
-    background: var(--signal);
+    background: var(--red-brand);
     color: white;
   }
 }
 
 @layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+  .font-mono-brand {
+    font-family: var(--font-mono);
+  }
+
+  .bg-hero {
+    background: var(--gradient-hero);
+  }
+  .bg-grad-red {
+    background: var(--gradient-red);
+  }
+  .bg-grad-navy {
+    background: var(--gradient-navy);
+  }
+
+  .text-grad-red {
+    background: var(--gradient-red);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .shadow-red-glow {
+    box-shadow: var(--shadow-red);
+  }
+  .shadow-card-soft {
+    box-shadow: var(--shadow-card);
+  }
+
+  .noise-overlay {
+    position: relative;
+  }
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+    mix-blend-mode: overlay;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(oklch(0.85 0.08 240 / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.85 0.08 240 / 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--light-blue);
+  }
+
+  .glow-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(80px);
+    opacity: 0.35;
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+  .glow-orb-red {
+    background: radial-gradient(circle, var(--red-brand) 0%, transparent 70%);
+  }
+  .glow-orb-navy {
+    background: radial-gradient(circle, var(--navy-mid) 0%, transparent 70%);
+  }
+
+  .reveal-up {
+    animation: reveal-up 0.7s ease-out both;
+  }
+  .floaty {
+    animation: floaty 6s ease-in-out infinite;
+  }
+  .pulse-ring {
+    animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  .glow-text {
+    text-shadow: 0 0 24px oklch(0.62 0.22 27 / 0.5);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  /* ── Legacy utility aliases (map to new palette) ───────────────────── */
   .glass {
-    background: color-mix(in oklab, white 8%, transparent);
+    background: color-mix(in oklab, white 6%, transparent);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     border: 1px solid color-mix(in oklab, white 12%, transparent);
   }
   .glass-light {
-    background: color-mix(in oklab, white 70%, transparent);
+    background: color-mix(in oklab, var(--navy-dk) 75%, transparent);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid color-mix(in oklab, var(--navy) 8%, transparent);
+    border: 1px solid color-mix(in oklab, white 8%, transparent);
   }
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
 
-  .bg-midnight { background-color: var(--midnight); }
+  .bg-midnight { background-color: var(--navy-dk); }
   .bg-navy { background-color: var(--navy); }
-  .bg-signal { background-color: var(--signal); }
-  .text-signal { color: var(--signal); }
-  .text-skyblue { color: var(--skyblue); }
-  .text-slate-soft { color: var(--slate-soft); }
-  .text-navy { color: var(--navy); }
-  .border-skyblue\/20 { border-color: color-mix(in oklab, var(--skyblue) 20%, transparent); }
+  .bg-navy-deep { background-color: var(--navy); }
+  .bg-signal { background-color: var(--red-brand); }
+  .text-signal { color: var(--red-brand); }
+  .text-skyblue { color: var(--light-blue); }
+  .text-slate-soft { color: var(--text-dim); }
+  .text-navy { color: oklch(0.98 0.005 240); }
+  .border-skyblue\/20 {
+    border-color: color-mix(in oklab, var(--light-blue) 20%, transparent);
+  }
 
-  /* Continuous marquee */
+  /* Continuous marquee (faster horizontal strip) */
   @keyframes cs-marquee {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
@@ -191,4 +301,25 @@
   .btn-lift:active {
     transform: translateY(0) scale(0.99);
   }
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.62 0.22 27 / 0.55); }
+  50% { box-shadow: 0 0 0 16px oklch(0.62 0.22 27 / 0); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
