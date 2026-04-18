@@ -462,10 +462,11 @@
   text-align: center;
   overflow: hidden;
   border-radius: 28px;
-  background: oklch(0.97 0.005 240);
+  background: #ffffff;
   color: oklch(0.18 0.04 260);
-  padding: 56px 28px 0;
+  padding: 56px 28px 56px;
   isolation: isolate;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 8px 30px -12px rgba(15,23,42,0.08);
 }
 .apple-tile.is-dark {
   background: linear-gradient(180deg, oklch(0.16 0.05 260) 0%, oklch(0.20 0.05 260) 100%);
