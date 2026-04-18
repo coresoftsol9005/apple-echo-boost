@@ -71,18 +71,19 @@ function Hero() {
   const orbY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   return (
-    <section ref={heroRef} className="relative overflow-hidden bg-midnight pt-28 text-white md:pt-36">
-      <motion.div className="pointer-events-none absolute inset-0 opacity-60" style={{ y: orbY }} aria-hidden>
-        <div className="absolute -top-40 left-1/2 h-[600px] w-[1100px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(13,71,161,0.55),transparent)]" />
-        <div className="absolute right-[-200px] top-40 h-[400px] w-[400px] rounded-full bg-[radial-gradient(closest-side,rgba(229,57,53,0.18),transparent)]" />
+    <section ref={heroRef} className="bg-hero relative overflow-hidden pt-28 text-white md:pt-36">
+      <motion.div className="pointer-events-none absolute inset-0" style={{ y: orbY }} aria-hidden>
+        <div className="glow-orb glow-orb-navy left-1/2 top-[-200px] h-[600px] w-[1100px] -translate-x-1/2" />
+        <div className="glow-orb glow-orb-red right-[-200px] top-40 h-[420px] w-[420px]" />
       </motion.div>
+      <div className="grid-bg pointer-events-none absolute inset-0 opacity-40" aria-hidden />
 
       <div className="relative mx-auto max-w-6xl px-5 text-center md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-skyblue backdrop-blur"
+          className="eyebrow mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-signal" /> Hisar · Digital Media · Business Audits
         </motion.div>
@@ -91,12 +92,12 @@ function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="group mx-auto max-w-6xl text-balance text-[52px] font-bold leading-[0.98] tracking-[-0.045em] md:text-[112px] lg:text-[128px]"
+          className="font-display group mx-auto max-w-6xl text-balance text-[52px] font-bold leading-[0.98] tracking-[-0.045em] md:text-[112px] lg:text-[128px]"
         >
-          <span className="inline-block bg-gradient-to-br from-white via-white to-[#90CAF9] bg-clip-text text-transparent transition-all duration-500 group-hover:from-white group-hover:via-[#FFCDD2] group-hover:to-[#E53935] group-hover:[text-shadow:0_0_60px_rgba(229,57,53,0.25)]">
+          <span className="inline-block bg-gradient-to-br from-white via-white to-light-blue bg-clip-text text-transparent transition-all duration-500 group-hover:from-white group-hover:via-[#FFCDD2] group-hover:to-[#E53935] group-hover:[text-shadow:0_0_60px_rgba(229,57,53,0.25)]">
             Innovation for
           </span>{" "}
-          <span className="relative inline-block bg-gradient-to-br from-white via-[#90CAF9] to-[#90CAF9] bg-clip-text text-transparent transition-all duration-500 group-hover:from-[#E53935] group-hover:via-white group-hover:to-[#90CAF9]">
+          <span className="relative inline-block bg-gradient-to-br from-white via-light-blue to-light-blue bg-clip-text text-transparent transition-all duration-500 group-hover:from-[#E53935] group-hover:via-white group-hover:to-light-blue">
             every business.
             <span className="pointer-events-none absolute -bottom-2 left-0 h-[3px] w-0 rounded-full bg-signal transition-all duration-700 group-hover:w-full" />
           </span>
