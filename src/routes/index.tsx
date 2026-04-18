@@ -675,47 +675,47 @@ function About() {
 
 function Stat({ k, v }: { k: string; v: string }) {
   return (
-    <div>
-      <div className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">{k}</div>
-      <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-skyblue/60">{v}</div>
+    <div className="text-center">
+      <div className="font-display text-2xl font-bold tracking-tight md:text-3xl">{k}</div>
+      <div className="mt-1 text-[10px] uppercase tracking-[0.18em] opacity-60">{v}</div>
     </div>
   );
 }
 
-/* ───────────────── TESTIMONIALS (grid + marquee) ───────────────── */
+/* ───────────────── TESTIMONIALS (Apple-style header) ───────────────── */
 function Testimonials() {
   return (
-    <section
-      id="stories"
-      className="relative overflow-hidden bg-midnight py-24 text-white md:py-32"
-    >
-      <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute left-1/2 top-0 h-[500px] w-[1100px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(13,71,161,0.45),transparent)]" />
-        <div className="absolute -right-40 bottom-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(closest-side,rgba(229,57,53,0.18),transparent)]" />
-      </div>
-
-      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
-        <div className="mb-14 text-center">
-          <div className="mb-5 inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-skyblue">
-            <span className="h-px w-8 bg-skyblue/40" />
-            Client Results
-            <span className="h-px w-8 bg-skyblue/40" />
-          </div>
-          <h2 className="text-balance text-5xl font-bold leading-[1.02] tracking-[-0.04em] md:text-7xl">
-            Real Businesses,{" "}
-            <span className="bg-gradient-to-br from-signal via-signal to-[#FF7A6E] bg-clip-text text-transparent">
-              Real Growth
-            </span>
+    <section id="stories" className="bg-apple-canvas py-4 md:py-6">
+      <div className="mx-auto max-w-[1400px] px-3 md:px-5">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="apple-tile is-dark min-h-[420px] md:min-h-[500px]"
+        >
+          <div className="apple-eyebrow">Client Results</div>
+          <h2 className="apple-headline">
+            Real businesses.
+            <br />
+            Real growth.
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-skyblue/80">
-            Haryana ke local businesses jo CoreSoft ke saath scale kar rahe hain — unke words mein.
+          <p className="apple-sub max-w-[560px]">
+            Haryana ke local businesses jo CoreSoft ke saath scale kar rahe hain
+            — unke words mein.
           </p>
-          <p className="mt-3 text-[12px] uppercase tracking-[0.18em] text-skyblue/50">
-            Tap any card to see their result
-          </p>
-        </div>
-
-        <TestimonialsGrid />
+          <div className="apple-cta-row">
+            <a href="#contact" className="apple-pill apple-pill-primary">
+              Become a story
+            </a>
+            <a href="#trial" className="apple-pill apple-pill-secondary">
+              Try free
+            </a>
+          </div>
+          <div className="mt-10 w-full">
+            <TestimonialsGrid />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
