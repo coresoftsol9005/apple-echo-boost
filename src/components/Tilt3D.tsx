@@ -23,8 +23,8 @@ type Props = {
 export function Tilt3D({
   children,
   className = "",
-  max = 4,
-  perspective = 1200,
+  max = 2,
+  perspective = 1600,
   lift = 0,
   glare = true,
   depth = 0,
@@ -52,7 +52,7 @@ export function Tilt3D({
     if (!r) return;
     px.set((e.clientX - r.left) / r.width);
     py.set((e.clientY - r.top) / r.height);
-    glareOpacity.set(0.18);
+    glareOpacity.set(0.09);
     if (lift) liftMv.set(1);
   };
 

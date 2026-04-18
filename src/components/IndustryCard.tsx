@@ -19,7 +19,7 @@ export function IndustryCard({ icon: Icon, title, power, image, tone = "light" }
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <Tilt3D max={3} lift={4} depth={18} className="h-full">
+      <Tilt3D max={1.5} lift={2} depth={9} className="h-full">
         <article
           className={`group relative h-full overflow-hidden rounded-3xl ${
             dark ? "bg-midnight text-white" : "bg-secondary text-foreground"
@@ -46,12 +46,12 @@ export function IndustryCard({ icon: Icon, title, power, image, tone = "light" }
               className={`mt-2 inline-flex h-9 w-9 items-center justify-center rounded-full ${
                 dark ? "bg-white/5" : "bg-white"
               }`}
-              style={{ transform: "translateZ(40px)" }}
+              style={{ transform: "translateZ(20px)" }}
             >
               <Icon className={`h-4 w-4 ${dark ? "text-skyblue" : "text-navy"}`} aria-hidden />
             </div>
           </div>
-          <div className="mt-6 flex justify-center px-6 pb-6" style={{ transform: "translateZ(60px)" }}>
+          <div className="mt-6 flex justify-center px-6 pb-6" style={{ transform: "translateZ(30px)" }}>
             <img
               src={image}
               alt={`${title} interface preview`}
