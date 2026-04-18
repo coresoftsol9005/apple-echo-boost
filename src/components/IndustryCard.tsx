@@ -7,6 +7,7 @@ type Props = {
   title: string;
   power: string;
   image: string;
+  /** dark = midnight surface, light = navy-mid (slightly brighter) surface */
   tone?: "light" | "dark";
 };
 
@@ -21,34 +22,32 @@ export function IndustryCard({ icon: Icon, title, power, image, tone = "light" }
     >
       <Tilt3D max={1.5} lift={2} depth={9} className="h-full">
         <article
-          className={`group relative h-full overflow-hidden rounded-3xl ${
-            dark ? "bg-midnight text-white" : "bg-secondary text-foreground"
-          } shadow-[0_30px_80px_-40px_rgba(13,71,161,0.45)] transition-shadow duration-500 hover:shadow-[0_40px_120px_-30px_rgba(13,71,161,0.6)]`}
+          className={`group relative h-full overflow-hidden rounded-3xl border border-white/10 text-white ${
+            dark ? "bg-midnight" : "bg-grad-navy"
+          } shadow-card-soft transition-all duration-500 hover:border-signal/40 hover:shadow-red-glow`}
         >
           <div className="px-8 pt-10 md:px-12 md:pt-14">
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-signal" />
-              <span className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${dark ? "text-skyblue" : "text-slate-soft"}`}>
+              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-skyblue">
                 {title}
               </span>
             </div>
-            <h3 className="mt-5 max-w-md text-balance text-3xl font-bold leading-[1.05] tracking-tight md:text-[42px]">
+            <h3 className="font-display mt-5 max-w-md text-balance text-3xl font-bold leading-[1.05] tracking-tight md:text-[42px]">
               {power}
             </h3>
             <a
               href="#contact"
-              className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium text-signal transition group-hover:gap-2.5"
+              className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium text-signal transition-all duration-300 group-hover:gap-2.5"
             >
               Learn more
               <span aria-hidden>→</span>
             </a>
             <div
-              className={`mt-2 inline-flex h-9 w-9 items-center justify-center rounded-full ${
-                dark ? "bg-white/5" : "bg-white"
-              }`}
+              className="mt-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10"
               style={{ transform: "translateZ(20px)" }}
             >
-              <Icon className={`h-4 w-4 ${dark ? "text-skyblue" : "text-navy"}`} aria-hidden />
+              <Icon className="h-4 w-4 text-skyblue" aria-hidden />
             </div>
           </div>
           <div className="mt-6 flex justify-center px-6 pb-6" style={{ transform: "translateZ(30px)" }}>
