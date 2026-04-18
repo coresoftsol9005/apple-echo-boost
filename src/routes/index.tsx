@@ -64,10 +64,10 @@ function Hero() {
     offset: ["start start", "end start"],
   });
   const spring = { stiffness: 100, damping: 22, mass: 0.6 };
-  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.5], [18, 0]), spring);
-  const scale = useSpring(useTransform(scrollYProgress, [0, 0.4], [0.94, 1]), spring);
-  const lift = useSpring(useTransform(scrollYProgress, [0, 0.5], [80, 0]), spring);
-  const orbY = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.5], [10, 0]), spring);
+  const scale = useSpring(useTransform(scrollYProgress, [0, 0.4], [0.97, 1]), spring);
+  const lift = useSpring(useTransform(scrollYProgress, [0, 0.5], [40, 0]), spring);
+  const orbY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   return (
     <section ref={heroRef} className="relative overflow-hidden bg-midnight pt-28 text-white md:pt-36">
@@ -90,11 +90,14 @@ function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto max-w-5xl text-balance text-[44px] font-bold leading-[1.02] tracking-[-0.04em] md:text-[88px]"
+          className="group mx-auto max-w-6xl text-balance text-[52px] font-bold leading-[0.98] tracking-[-0.045em] md:text-[112px] lg:text-[128px]"
         >
-          Innovation for{" "}
-          <span className="bg-gradient-to-br from-white via-white to-[#90CAF9] bg-clip-text text-transparent">
+          <span className="inline-block bg-gradient-to-br from-white via-white to-[#90CAF9] bg-clip-text text-transparent transition-all duration-500 group-hover:from-white group-hover:via-[#FFCDD2] group-hover:to-[#E53935] group-hover:[text-shadow:0_0_60px_rgba(229,57,53,0.25)]">
+            Innovation for
+          </span>{" "}
+          <span className="relative inline-block bg-gradient-to-br from-white via-[#90CAF9] to-[#90CAF9] bg-clip-text text-transparent transition-all duration-500 group-hover:from-[#E53935] group-hover:via-white group-hover:to-[#90CAF9]">
             every business.
+            <span className="pointer-events-none absolute -bottom-2 left-0 h-[3px] w-0 rounded-full bg-signal transition-all duration-700 group-hover:w-full" />
           </span>
         </motion.h1>
 
@@ -178,7 +181,7 @@ function MetricsBar() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Tilt3D max={10} lift={4} glare={false} className="h-full">
+            <Tilt3D max={5} lift={3} glare={false} className="h-full">
               <div className="rounded-2xl bg-background/60 p-5 text-center md:text-left">
                 <div className="text-3xl font-bold tracking-tight text-navy md:text-4xl">{s.k}</div>
                 <div className="mt-1 text-[12px] uppercase tracking-[0.16em] text-slate-soft">{s.v}</div>
@@ -254,7 +257,7 @@ function Industries() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7 }}
           >
-            <Tilt3D max={5} lift={6} depth={20} className="h-full">
+            <Tilt3D max={3} lift={4} depth={14} className="h-full">
               <div className="relative h-full overflow-hidden rounded-3xl bg-gradient-to-br from-navy to-navy-deep p-10 text-white shadow-[0_30px_80px_-30px_rgba(13,71,161,0.6)] md:p-12">
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-signal" />
@@ -379,7 +382,7 @@ function ContactSection() {
         </div>
 
         <div className="flex md:col-span-7">
-          <Tilt3D max={5} lift={4} glare={false} className="w-full">
+          <Tilt3D max={3} lift={2} glare={false} className="w-full">
             <LeadForm />
           </Tilt3D>
         </div>

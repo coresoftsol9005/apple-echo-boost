@@ -19,7 +19,7 @@ export function IndustryCard({ icon: Icon, title, power, image, tone = "light" }
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <Tilt3D max={6} lift={6} depth={30} className="h-full">
+      <Tilt3D max={3} lift={4} depth={18} className="h-full">
         <article
           className={`group relative h-full overflow-hidden rounded-3xl ${
             dark ? "bg-midnight text-white" : "bg-secondary text-foreground"

@@ -23,8 +23,8 @@ type Props = {
 export function Tilt3D({
   children,
   className = "",
-  max = 8,
-  perspective = 1000,
+  max = 4,
+  perspective = 1200,
   lift = 0,
   glare = true,
   depth = 0,
