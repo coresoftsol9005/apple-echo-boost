@@ -52,6 +52,7 @@ function Index() {
       <MetricsBar />
       <Services />
       <Industries />
+      <About />
       <Testimonials />
       <ContactSection />
       <Footer />
