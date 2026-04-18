@@ -90,11 +90,14 @@ function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto max-w-5xl text-balance text-[44px] font-bold leading-[1.02] tracking-[-0.04em] md:text-[88px]"
+          className="group mx-auto max-w-6xl text-balance text-[52px] font-bold leading-[0.98] tracking-[-0.045em] md:text-[112px] lg:text-[128px]"
         >
-          Innovation for{" "}
-          <span className="bg-gradient-to-br from-white via-white to-[#90CAF9] bg-clip-text text-transparent">
+          <span className="inline-block bg-gradient-to-br from-white via-white to-[#90CAF9] bg-clip-text text-transparent transition-all duration-500 group-hover:from-white group-hover:via-[#FFCDD2] group-hover:to-[#E53935] group-hover:[text-shadow:0_0_60px_rgba(229,57,53,0.25)]">
+            Innovation for
+          </span>{" "}
+          <span className="relative inline-block bg-gradient-to-br from-white via-[#90CAF9] to-[#90CAF9] bg-clip-text text-transparent transition-all duration-500 group-hover:from-[#E53935] group-hover:via-white group-hover:to-[#90CAF9]">
             every business.
+            <span className="pointer-events-none absolute -bottom-2 left-0 h-[3px] w-0 rounded-full bg-signal transition-all duration-700 group-hover:w-full" />
           </span>
         </motion.h1>
 
