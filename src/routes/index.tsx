@@ -75,7 +75,8 @@ function Hero() {
   const orbY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   return (
-    <section ref={heroRef} className="bg-hero relative overflow-hidden pt-28 text-white md:pt-36">
+    <section ref={heroRef} className="spotlight-host bg-hero relative overflow-hidden pt-28 text-white md:pt-36">
+      <span className="spotlight" aria-hidden />
       <motion.div className="pointer-events-none absolute inset-0" style={{ y: orbY }} aria-hidden>
         <div className="glow-orb glow-orb-navy left-1/2 top-[-200px] h-[600px] w-[1100px] -translate-x-1/2" />
         <div className="glow-orb glow-orb-red right-[-200px] top-40 h-[420px] w-[420px]" />
