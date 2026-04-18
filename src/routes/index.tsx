@@ -63,15 +63,35 @@ function Index() {
 /* ───────────────── HERO ───────────────── */
 function Hero() {
   const heroRef = useRef<HTMLElement>(null);
+  const showcaseRef = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
   const spring = { stiffness: 100, damping: 22, mass: 0.6 };
-  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.5], [5, 0]), spring);
-  const scale = useSpring(useTransform(scrollYProgress, [0, 0.4], [0.985, 1]), spring);
-  const lift = useSpring(useTransform(scrollYProgress, [0, 0.5], [20, 0]), spring);
+  const scrollLift = useSpring(useTransform(scrollYProgress, [0, 0.5], [20, 0]), spring);
   const orbY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+
+  // Mouse-driven 3D parallax tilt
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const rotX = useSpring(useTransform(my, [-0.5, 0.5], [6, -6]), spring);
+  const rotY = useSpring(useTransform(mx, [-0.5, 0.5], [-8, 8]), spring);
+  const floatX = useSpring(useTransform(mx, [-0.5, 0.5], [-14, 14]), spring);
+  const floatY = useSpring(useTransform(my, [-0.5, 0.5], [-10, 10]), spring);
+
+  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = showcaseRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    mx.set((e.clientX - rect.left) / rect.width - 0.5);
+    my.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+  const handleLeave = () => {
+    mx.set(0);
+    my.set(0);
+  };
 
   return (
     <section ref={heroRef} className="spotlight-host bg-hero relative overflow-hidden pt-28 text-white md:pt-36">
@@ -82,7 +102,7 @@ function Hero() {
       </motion.div>
       <div className="grid-bg pointer-events-none absolute inset-0 opacity-40" aria-hidden />
 
-      <div className="relative mx-auto max-w-6xl px-5 text-center md:px-8">
+      <div className="relative mx-auto max-w-7xl px-5 text-center md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -147,21 +167,84 @@ function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.1, delay: 0.4 }}
-          className="relative mx-auto mt-16 w-full max-w-5xl"
-          style={{ perspective: 1400 }}
+          className="relative mx-auto mt-20 w-full max-w-[1280px]"
+          style={{ perspective: 1600 }}
         >
           <motion.div
-            style={{ rotateX, scale, y: lift, transformStyle: "preserve-3d", transformOrigin: "50% 100%" }}
+            ref={showcaseRef}
+            onMouseMove={handleMove}
+            onMouseLeave={handleLeave}
+            style={{
+              rotateX: rotX,
+              rotateY: rotY,
+              y: scrollLift,
+              transformStyle: "preserve-3d",
+              transformOrigin: "50% 80%",
+            }}
             className="relative will-change-transform"
           >
-            <div className="absolute inset-x-10 -bottom-4 h-20 rounded-full bg-signal/30 blur-3xl" aria-hidden />
+            {/* Ambient red wash under the laptop */}
+            <div
+              className="absolute inset-x-16 -bottom-10 h-32 rounded-full bg-signal/40 blur-3xl"
+              aria-hidden
+            />
+            {/* Cool blue counter-glow on the left */}
+            <div
+              className="absolute -left-10 top-1/3 h-64 w-64 rounded-full bg-navy-mid/50 blur-3xl"
+              aria-hidden
+            />
+
+            {/* Hero showcase image */}
             <img
               src={heroLaptop}
-              alt="MacBook displaying CoreSoft business dashboard"
+              alt="CoreSoft analytics dashboard with restaurant booking app, WhatsApp leads and 4.9 star reviews"
               width={1920}
               height={1080}
-              className="relative mx-auto w-full rounded-[28px] shadow-[0_60px_140px_-30px_rgba(0,0,0,0.8)]"
+              className="relative mx-auto w-full rounded-[32px] shadow-[0_80px_160px_-40px_rgba(0,0,0,0.85)] ring-1 ring-white/10"
             />
+
+            {/* Floating badge: live conversions */}
+            <motion.div
+              style={{ x: floatX, y: floatY, transform: "translateZ(60px)" }}
+              className="absolute -left-4 top-12 hidden items-center gap-3 rounded-2xl border border-white/10 bg-midnight/85 px-4 py-3 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl md:flex"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inset-0 animate-ping rounded-full bg-signal opacity-70" />
+                <span className="relative h-2.5 w-2.5 rounded-full bg-signal" />
+              </span>
+              <div className="text-left">
+                <div className="font-display text-[13px] font-semibold text-white">+18 leads today</div>
+                <div className="text-[10px] uppercase tracking-[0.18em] text-skyblue/70">Live · Hisar</div>
+              </div>
+            </motion.div>
+
+            {/* Floating badge: rating */}
+            <motion.div
+              style={{
+                x: useTransform(floatX, (v) => -v * 0.7),
+                y: useTransform(floatY, (v) => -v * 0.7),
+                transform: "translateZ(80px)",
+              }}
+              className="absolute -right-4 top-1/3 hidden flex-col gap-1 rounded-2xl border border-white/10 bg-midnight/85 px-4 py-3 text-left shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl md:flex"
+            >
+              <div className="font-display flex items-center gap-1.5 text-[15px] font-semibold text-white">
+                4.9 <span className="text-signal">★★★★★</span>
+              </div>
+              <div className="text-[10px] uppercase tracking-[0.18em] text-skyblue/70">Avg client rating</div>
+            </motion.div>
+
+            {/* Floating badge: 7-day delivery */}
+            <motion.div
+              style={{
+                x: useTransform(floatX, (v) => v * 0.5),
+                y: useTransform(floatY, (v) => -v * 0.4),
+                transform: "translateZ(40px)",
+              }}
+              className="absolute -bottom-4 left-1/4 hidden items-center gap-2 rounded-full border border-signal/30 bg-signal/10 px-4 py-2 text-[12px] font-semibold text-white shadow-[0_18px_40px_-15px_rgba(229,57,53,0.5)] backdrop-blur-xl md:flex"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-signal" />
+              Shipped in 7 days
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
