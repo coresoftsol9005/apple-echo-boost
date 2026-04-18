@@ -545,8 +545,8 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  flex: 1;
 }
+.apple-tile-media:empty { display: none; }
 .apple-tile-media img {
   max-width: 100%;
   height: auto;
@@ -554,5 +554,5 @@
 }
 
 .bg-apple-canvas {
-  background: oklch(0.96 0.004 240);
+  background: oklch(0.94 0.005 240);
 }
