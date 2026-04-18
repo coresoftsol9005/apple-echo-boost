@@ -169,12 +169,22 @@ function MetricsBar() {
   ];
   return (
     <section className="border-y border-border bg-secondary/40">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-5 py-10 md:grid-cols-4 md:px-8 md:py-14">
-        {stats.map((s) => (
-          <div key={s.k} className="text-center md:text-left">
-            <div className="text-3xl font-bold tracking-tight text-navy md:text-4xl">{s.k}</div>
-            <div className="mt-1 text-[12px] uppercase tracking-[0.16em] text-slate-soft">{s.v}</div>
-          </div>
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-5 py-10 md:grid-cols-4 md:px-8 md:py-14">
+        {stats.map((s, i) => (
+          <motion.div
+            key={s.k}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Tilt3D max={10} lift={4} glare={false} className="h-full">
+              <div className="rounded-2xl bg-background/60 p-5 text-center md:text-left">
+                <div className="text-3xl font-bold tracking-tight text-navy md:text-4xl">{s.k}</div>
+                <div className="mt-1 text-[12px] uppercase tracking-[0.16em] text-slate-soft">{s.v}</div>
+              </div>
+            </Tilt3D>
+          </motion.div>
         ))}
       </div>
     </section>
@@ -243,27 +253,33 @@ function Industries() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7 }}
-            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy to-navy-deep p-10 text-white md:p-12"
           >
-            <div className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-signal" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-skyblue">
-                Every Other Business
-              </span>
-            </div>
-            <h3 className="mt-5 max-w-md text-balance text-3xl font-bold leading-[1.05] md:text-[42px]">
-              Built for you. Whatever you do.
-            </h3>
-            <p className="mt-4 max-w-md text-skyblue/80">
-              Retail, services, contractors — agar aap local hain aur grow karna chahte ho,
-              hum aapke liye banayenge.
-            </p>
-            <a
-              href="#contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 text-[13px] font-semibold uppercase tracking-wider text-white transition hover:brightness-110"
-            >
-              Talk to us <ArrowRight className="h-4 w-4" />
-            </a>
+            <Tilt3D max={5} lift={6} depth={20} className="h-full">
+              <div className="relative h-full overflow-hidden rounded-3xl bg-gradient-to-br from-navy to-navy-deep p-10 text-white shadow-[0_30px_80px_-30px_rgba(13,71,161,0.6)] md:p-12">
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-signal" />
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-skyblue">
+                    Every Other Business
+                  </span>
+                </div>
+                <h3 className="mt-5 max-w-md text-balance text-3xl font-bold leading-[1.05] md:text-[42px]">
+                  Built for you. Whatever you do.
+                </h3>
+                <p className="mt-4 max-w-md text-skyblue/80">
+                  Retail, services, contractors — agar aap local hain aur grow karna chahte ho,
+                  hum aapke liye banayenge.
+                </p>
+                <Magnetic>
+                  <a
+                    href="#contact"
+                    className="mt-8 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 text-[13px] font-semibold uppercase tracking-wider text-white transition hover:brightness-110"
+                    style={{ transform: "translateZ(40px)" }}
+                  >
+                    Talk to us <ArrowRight className="h-4 w-4" />
+                  </a>
+                </Magnetic>
+              </div>
+            </Tilt3D>
           </motion.div>
         </div>
       </div>
