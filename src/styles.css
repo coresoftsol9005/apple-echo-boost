@@ -165,4 +165,30 @@
   .text-slate-soft { color: var(--slate-soft); }
   .text-navy { color: var(--navy); }
   .border-skyblue\/20 { border-color: color-mix(in oklab, var(--skyblue) 20%, transparent); }
+
+  /* Continuous marquee */
+  @keyframes cs-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .animate-cs-marquee {
+    animation: cs-marquee 38s linear infinite;
+  }
+  .animate-cs-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  /* Reusable button hover lift */
+  .btn-lift {
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1),
+                filter 300ms ease;
+  }
+  .btn-lift:hover {
+    transform: translateY(-2px) scale(1.03);
+    filter: brightness(1.08);
+  }
+  .btn-lift:active {
+    transform: translateY(0) scale(0.99);
+  }
 }

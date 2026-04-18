@@ -11,6 +11,7 @@ import { LeadForm } from "@/components/LeadForm";
 import { CoreSoftLogo } from "@/components/CoreSoftLogo";
 import { Tilt3D } from "@/components/Tilt3D";
 import { Magnetic } from "@/components/Magnetic";
+import { TestimonialsGrid } from "@/components/TestimonialsGrid";
 
 import heroLaptop from "@/assets/hero-laptop.jpg";
 import deviceRestaurant from "@/assets/device-restaurant.jpg";
@@ -290,58 +291,40 @@ function Industries() {
   );
 }
 
-/* ───────────────── TESTIMONIALS (serif quotes) ───────────────── */
+/* ───────────────── TESTIMONIALS (grid + marquee) ───────────────── */
 function Testimonials() {
-  const quotes = [
-    {
-      body: "CoreSoft ne hamare restaurant ki website 7 din mein bana di. Online orders ab triple ho gaye hain.",
-      who: "Rajesh Kumar",
-      role: "Owner, R.K. Family Restaurant · Hisar",
-    },
-    {
-      body: "Pehle clinic ke liye Google par koi nahi dhundhta tha. Ab har hafte 40+ naye patients book kar rahe hain.",
-      who: "Dr. Anil Gupta",
-      role: "MBBS, MD · Gupta Clinic",
-    },
-  ];
-
   return (
-    <section id="stories" className="bg-background py-24 md:py-36">
-      <div className="mx-auto max-w-4xl px-5 md:px-8">
-        <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-soft">
-            <span className="h-1.5 w-1.5 rounded-full bg-signal" /> Customer Stories
+    <section
+      id="stories"
+      className="relative overflow-hidden bg-midnight py-24 text-white md:py-32"
+    >
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="absolute left-1/2 top-0 h-[500px] w-[1100px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(13,71,161,0.45),transparent)]" />
+        <div className="absolute -right-40 bottom-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(closest-side,rgba(229,57,53,0.18),transparent)]" />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
+        <div className="mb-14 text-center">
+          <div className="mb-5 inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-skyblue">
+            <span className="h-px w-8 bg-skyblue/40" />
+            Client Results
+            <span className="h-px w-8 bg-skyblue/40" />
           </div>
-          <h2 className="text-balance text-4xl font-bold tracking-[-0.035em] text-navy md:text-5xl">
-            Real businesses. Real growth.
+          <h2 className="text-balance text-5xl font-bold leading-[1.02] tracking-[-0.04em] md:text-7xl">
+            Real Businesses,{" "}
+            <span className="bg-gradient-to-br from-signal via-signal to-[#FF7A6E] bg-clip-text text-transparent">
+              Real Growth
+            </span>
           </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-skyblue/80">
+            Haryana ke local businesses jo CoreSoft ke saath scale kar rahe hain — unke words mein.
+          </p>
+          <p className="mt-3 text-[12px] uppercase tracking-[0.18em] text-skyblue/50">
+            Tap any card to see their result
+          </p>
         </div>
 
-        <div className="space-y-20 md:space-y-28">
-          {quotes.map((q, i) => (
-            <motion.figure
-              key={q.who}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: i * 0.1 }}
-              className="text-center"
-            >
-              <blockquote
-                className="text-balance font-serif text-3xl font-light leading-[1.2] text-foreground md:text-5xl"
-                style={{ fontFamily: "'Newsreader', 'New York', Georgia, serif" }}
-              >
-                <span className="text-signal">“</span>
-                {q.body}
-                <span className="text-signal">”</span>
-              </blockquote>
-              <figcaption className="mt-8">
-                <div className="text-base font-semibold text-navy">{q.who}</div>
-                <div className="mt-1 text-[13px] text-slate-soft">{q.role}</div>
-              </figcaption>
-            </motion.figure>
-          ))}
-        </div>
+        <TestimonialsGrid />
       </div>
     </section>
   );
