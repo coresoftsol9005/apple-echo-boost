@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Toaster } from "sonner";
-import { UtensilsCrossed, Stethoscope, Scissors, ArrowRight, Instagram, Facebook } from "lucide-react";
+import { UtensilsCrossed, Stethoscope, Scissors, ArrowRight, Instagram, Facebook, Sparkles, Target, Users, Zap } from "lucide-react";
 
 import { Navbar } from "@/components/Navbar";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
@@ -52,6 +52,7 @@ function Index() {
       <MetricsBar />
       <Services />
       <Industries />
+      <About />
       <Testimonials />
       <ContactSection />
       <Footer />
@@ -293,6 +294,104 @@ function Industries() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* ───────────────── ABOUT ───────────────── */
+function About() {
+  const values = [
+    {
+      icon: Zap,
+      title: "7-Day Delivery",
+      body: "No agency delays. Most projects ship in a week — design, build, launch.",
+    },
+    {
+      icon: Target,
+      title: "Local-First Strategy",
+      body: "Built for Hisar businesses. Google Maps, regional SEO, vernacular content.",
+    },
+    {
+      icon: Sparkles,
+      title: "Apple-Grade Craft",
+      body: "Premium typography, motion, and micro-interactions. Every pixel intentional.",
+    },
+    {
+      icon: Users,
+      title: "Founder-Led Service",
+      body: "Talk directly to the people building your site. No account managers, no handoffs.",
+    },
+  ];
+
+  return (
+    <section id="about" className="relative overflow-hidden bg-background py-24 md:py-32">
+      <div className="grid-bg pointer-events-none absolute inset-0 opacity-30" aria-hidden />
+      <div className="glow-orb glow-orb-navy left-[-180px] top-32 h-[420px] w-[420px]" />
+      <div className="glow-orb glow-orb-red right-[-150px] bottom-20 h-[360px] w-[360px]" />
+
+      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
+        <div className="grid items-start gap-14 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <div className="eyebrow mb-5 inline-flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-signal" /> About CoreSoft
+            </div>
+            <h2 className="font-display text-balance text-4xl font-bold leading-[1.05] tracking-[-0.035em] text-white md:text-6xl">
+              A Hisar studio
+              <br />
+              building <span className="text-grad-red">India's local heroes.</span>
+            </h2>
+            <p className="mt-6 text-pretty text-lg leading-relaxed text-skyblue/80">
+              CoreSoft Solutions started with one belief: every kirana, clinic and café in Haryana
+              deserves the same digital craft as a Bengaluru startup. We design, code and launch
+              premium websites — fast, transparent, and built to convert.
+            </p>
+            <p className="mt-4 text-pretty text-skyblue/70">
+              Hisar mein based, but trusted by businesses across Haryana, Punjab and Delhi NCR.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-6 border-t border-white/10 pt-8">
+              <Stat k="50+" v="Businesses launched" />
+              <Stat k="98%" v="Client retention" />
+              <Stat k="2024" v="Founded in Hisar" />
+            </div>
+          </div>
+
+          <div className="md:col-span-7">
+            <div className="grid gap-4 sm:grid-cols-2">
+              {values.map((val, i) => (
+                <motion.div
+                  key={val.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Tilt3D max={1.5} lift={2} depth={8} className="h-full">
+                    <div className="group h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all duration-300 hover:border-signal/30 hover:bg-white/[0.05]">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-grad-navy ring-1 ring-white/10 transition-transform duration-300 group-hover:scale-105">
+                        <val.icon className="h-5 w-5 text-skyblue" aria-hidden />
+                      </div>
+                      <h3 className="font-display mt-5 text-xl font-semibold tracking-tight text-white">
+                        {val.title}
+                      </h3>
+                      <p className="mt-2 text-[14px] leading-relaxed text-skyblue/75">{val.body}</p>
+                    </div>
+                  </Tilt3D>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Stat({ k, v }: { k: string; v: string }) {
+  return (
+    <div>
+      <div className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">{k}</div>
+      <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-skyblue/60">{v}</div>
+    </div>
   );
 }
 

@@ -5,6 +5,7 @@ import { CoreSoftLogo } from "./CoreSoftLogo";
 const links = [
   { href: "#services", label: "Services" },
   { href: "#industries", label: "Industries" },
+  { href: "#about", label: "About" },
   { href: "#stories", label: "Stories" },
   { href: "#contact", label: "Contact" },
 ];
