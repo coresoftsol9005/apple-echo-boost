@@ -13,6 +13,7 @@ import { Tilt3D } from "@/components/Tilt3D";
 import { Magnetic } from "@/components/Magnetic";
 import { TestimonialsGrid } from "@/components/TestimonialsGrid";
 import { BrandsMarquee } from "@/components/BrandsMarquee";
+import { Spotlight } from "@/components/Spotlight";
 
 import heroLaptop from "@/assets/hero-laptop.jpg";
 import deviceRestaurant from "@/assets/device-restaurant.jpg";
@@ -126,7 +127,7 @@ function Hero() {
           <Magnetic>
             <a
               href="#contact"
-              className="btn-lift group inline-flex items-center gap-2 rounded-full bg-signal px-7 py-3.5 text-[14px] font-semibold text-white shadow-[0_20px_50px_-15px_rgba(229,57,53,0.6)]"
+              className="btn-lift btn-shimmer group inline-flex items-center gap-2 rounded-full bg-signal px-7 py-3.5 text-[14px] font-semibold text-white shadow-[0_20px_50px_-15px_rgba(229,57,53,0.6)]"
             >
               Get a free audit
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -135,7 +136,7 @@ function Hero() {
           <Magnetic strength={4}>
             <a
               href="#industries"
-              className="btn-lift inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-[14px] font-semibold text-white hover:bg-white/10"
+              className="btn-lift btn-ghost-brand inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-[14px] font-semibold text-white"
             >
               See what we build
             </a>
