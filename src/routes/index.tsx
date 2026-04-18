@@ -291,32 +291,37 @@ function MetricsBar() {
   );
 }
 
-/* ───────────────── SERVICES (the hook) ───────────────── */
+/* ───────────────── SERVICES (Apple-style intro tile) ───────────────── */
 function Services() {
   return (
-    <section id="services" className="relative overflow-hidden bg-background py-24 md:py-36">
-      <div className="glow-orb glow-orb-navy left-[-200px] top-20 h-[400px] w-[400px]" />
-      <div className="glow-orb glow-orb-red right-[-150px] bottom-10 h-[320px] w-[320px]" />
-      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
-        <div className="grid items-end gap-10 md:grid-cols-12">
-          <div className="md:col-span-7">
-            <div className="eyebrow mb-4 inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-red-brand" /> The Hook
-            </div>
-            <h2 className="font-display text-balance text-4xl font-bold leading-[1.05] tracking-[-0.035em] text-white md:text-6xl">
-              Apne Business ko
-              <br />
-              <span className="text-grad-red">Digital Banaiye.</span>
-            </h2>
+    <section id="services" className="bg-apple-canvas py-4 md:py-6">
+      <div className="mx-auto max-w-[1400px] px-3 md:px-5">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="apple-tile min-h-[420px] md:min-h-[520px]"
+        >
+          <div className="apple-eyebrow">The Hook</div>
+          <h2 className="apple-headline">
+            Apne Business ko
+            <br />
+            Digital Banaiye.
+          </h2>
+          <p className="apple-sub max-w-[560px]">
+            Restaurant, clinic ya salon — har business ke liye custom packages.
+            Premium sites, Google ranking, Instagram growth. Transparent pricing.
+          </p>
+          <div className="apple-cta-row">
+            <a href="#industries" className="apple-pill apple-pill-primary">
+              See packages
+            </a>
+            <a href="#contact" className="apple-pill apple-pill-secondary">
+              Talk to us
+            </a>
           </div>
-          <div className="md:col-span-5">
-            <p className="text-pretty text-lg leading-relaxed text-skyblue/80">
-              Chahe restaurant ho, clinic ho, ya salon — humne har business ke liye
-              custom packages banaye hain. Professional sites, Google ranking, aur
-              Instagram growth — sab ek hi jagah, transparent pricing.
-            </p>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
