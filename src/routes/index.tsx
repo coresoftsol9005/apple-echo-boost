@@ -497,18 +497,11 @@ function FreeTrial() {
                     <ul className="space-y-3 text-[13px] text-skyblue/85">
                       <TrustRow label="Delivery" value="7 days" />
                       <TrustRow label="Strategy call" value="30 min · founder" />
-                      <TrustRow label="Spots left this month" value="3 of 5" />
                       <TrustRow label="Cancellation" value="Anytime, no fee" />
                     </ul>
 
-                    <div className="mt-6 flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5">
-                      <span className="relative flex h-2 w-2">
-                        <span className="absolute inset-0 animate-ping rounded-full bg-signal opacity-70" />
-                        <span className="relative h-2 w-2 rounded-full bg-signal" />
-                      </span>
-                      <span className="text-[11px] uppercase tracking-[0.18em] text-skyblue/70">
-                        Onboarding new clients now
-                      </span>
+                    <div className="mt-6">
+                      <SpotsTicker claimed={2} total={5} />
                     </div>
                   </div>
                 </div>
