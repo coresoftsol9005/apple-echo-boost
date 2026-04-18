@@ -291,98 +291,103 @@ function MetricsBar() {
   );
 }
 
-/* ───────────────── SERVICES (the hook) ───────────────── */
+/* ───────────────── SERVICES (Apple-style intro tile) ───────────────── */
 function Services() {
   return (
-    <section id="services" className="relative overflow-hidden bg-background py-24 md:py-36">
-      <div className="glow-orb glow-orb-navy left-[-200px] top-20 h-[400px] w-[400px]" />
-      <div className="glow-orb glow-orb-red right-[-150px] bottom-10 h-[320px] w-[320px]" />
-      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
-        <div className="grid items-end gap-10 md:grid-cols-12">
-          <div className="md:col-span-7">
-            <div className="eyebrow mb-4 inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-red-brand" /> The Hook
-            </div>
-            <h2 className="font-display text-balance text-4xl font-bold leading-[1.05] tracking-[-0.035em] text-white md:text-6xl">
-              Apne Business ko
-              <br />
-              <span className="text-grad-red">Digital Banaiye.</span>
-            </h2>
+    <section id="services" className="bg-apple-canvas py-4 md:py-6">
+      <div className="mx-auto max-w-[1400px] px-3 md:px-5">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="apple-tile"
+        >
+          <div className="apple-eyebrow">The Hook</div>
+          <h2 className="apple-headline">
+            Apne Business ko
+            <br />
+            Digital Banaiye.
+          </h2>
+          <p className="apple-sub max-w-[560px]">
+            Restaurant, clinic ya salon — har business ke liye custom packages.
+            Premium sites, Google ranking, Instagram growth. Transparent pricing.
+          </p>
+          <div className="apple-cta-row">
+            <a href="#industries" className="apple-pill apple-pill-primary">
+              See packages
+            </a>
+            <a href="#contact" className="apple-pill apple-pill-secondary">
+              Talk to us
+            </a>
           </div>
-          <div className="md:col-span-5">
-            <p className="text-pretty text-lg leading-relaxed text-skyblue/80">
-              Chahe restaurant ho, clinic ho, ya salon — humne har business ke liye
-              custom packages banaye hain. Professional sites, Google ranking, aur
-              Instagram growth — sab ek hi jagah, transparent pricing.
-            </p>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-/* ───────────────── INDUSTRIES ───────────────── */
+/* ───────────────── INDUSTRIES (Apple-style tile grid) ───────────────── */
 function Industries() {
   return (
-    <section id="industries" className="bg-background py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <div className="grid gap-5 md:grid-cols-2">
-          <IndustryCard
-            icon={UtensilsCrossed}
-            title="Restaurant & Café"
-            power="Online ordering. Built for full tables."
-            image={deviceRestaurant}
-          />
-          <IndustryCard
-            icon={Stethoscope}
-            title="Doctor & Clinic"
-            power="Google Ranking #1. Built for trust."
-            image={deviceDoctor}
-            tone="dark"
-          />
-          <IndustryCard
-            icon={Scissors}
-            title="Salon & Spa"
-            power="Instagram-first booking. Built for beauty."
-            image={deviceSalon}
-            tone="dark"
-          />
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
-          >
-            <Tilt3D max={1.5} lift={2} depth={7} className="h-full">
-              <div className="bg-grad-navy relative h-full overflow-hidden rounded-3xl p-10 text-white shadow-card-soft md:p-12">
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-signal" />
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-skyblue">
-                    Every Other Business
-                  </span>
-                </div>
-                <h3 className="mt-5 max-w-md text-balance text-3xl font-bold leading-[1.05] md:text-[42px]">
-                  Built for you. Whatever you do.
-                </h3>
-                <p className="mt-4 max-w-md text-skyblue/80">
-                  Retail, services, contractors — agar aap local hain aur grow karna chahte ho,
-                  hum aapke liye banayenge.
-                </p>
-                <Magnetic>
-                  <a
-                    href="#contact"
-                    className="btn-lift btn-shimmer group mt-8 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 text-[13px] font-semibold uppercase tracking-wider text-white shadow-[0_18px_40px_-15px_rgba(229,57,53,0.6)]"
-                    style={{ transform: "translateZ(20px)" }}
-                  >
-                    Talk to us
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </a>
-                </Magnetic>
-              </div>
-            </Tilt3D>
-          </motion.div>
-        </div>
+    <section id="industries" className="bg-apple-canvas py-4 md:py-6">
+      <div className="mx-auto grid max-w-[1400px] gap-3 px-3 md:grid-cols-2 md:gap-5 md:px-5">
+        <IndustryCard
+          icon={UtensilsCrossed}
+          title="Restaurant & Café"
+          power="Online ordering. Built for full tables."
+          image={deviceRestaurant}
+        />
+        <IndustryCard
+          icon={Stethoscope}
+          title="Doctor & Clinic"
+          power="Google Ranking #1. Built for trust."
+          image={deviceDoctor}
+          tone="dark"
+        />
+        <IndustryCard
+          icon={Scissors}
+          title="Salon & Spa"
+          power="Instagram-first booking. Built for beauty."
+          image={deviceSalon}
+          tone="dark"
+        />
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="h-full"
+        >
+          <article className="apple-tile h-full">
+            <div className="apple-eyebrow">Every Other Business</div>
+            <h3 className="apple-headline max-w-[420px]">
+              Built for you. Whatever you do.
+            </h3>
+            <p className="apple-sub max-w-[460px]">
+              Retail, services, contractors — agar aap local hain aur grow karna
+              chahte ho, hum aapke liye banayenge.
+            </p>
+            <div className="apple-cta-row">
+              <a href="#contact" className="apple-pill apple-pill-primary">
+                Talk to us
+              </a>
+              <a href="#trial" className="apple-pill apple-pill-secondary">
+                Try free
+              </a>
+            </div>
+            <div className="apple-tile-media">
+              <div
+                aria-hidden
+                className="mx-auto h-32 w-32 rounded-full md:h-44 md:w-44"
+                style={{
+                  background:
+                    "radial-gradient(circle at 30% 30%, oklch(0.62 0.22 27 / 0.55), transparent 60%), radial-gradient(circle at 70% 70%, oklch(0.50 0.15 260 / 0.5), transparent 60%)",
+                }}
+              />
+            </div>
+          </article>
+        </motion.div>
       </div>
     </section>
   );
@@ -400,114 +405,82 @@ function FreeTrial() {
   ];
 
   return (
-    <section
-      id="trial"
-      className="relative overflow-hidden bg-midnight py-20 text-white md:py-28"
-    >
-      <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute left-1/2 top-[-150px] h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(229,57,53,0.22),transparent)]" />
-        <div className="absolute -left-32 bottom-0 h-[360px] w-[360px] rounded-full bg-[radial-gradient(closest-side,rgba(13,71,161,0.45),transparent)]" />
-      </div>
-
-      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
+    <section id="trial" className="bg-apple-canvas py-4 md:py-6">
+      <div className="mx-auto max-w-[1400px] px-3 md:px-5">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="apple-tile is-dark"
         >
-          <Tilt3D max={1} lift={1} glare={false} className="w-full">
-            <div className="brand-border relative overflow-hidden rounded-3xl border border-white/10 bg-grad-navy p-8 shadow-card-soft md:p-14">
-              <div className="grid items-center gap-10 md:grid-cols-12">
-                {/* Left: copy */}
-                <div className="md:col-span-7">
-                  <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-signal/30 bg-signal/10 px-3 py-1.5">
-                    <Gift className="h-3.5 w-3.5 text-signal" />
-                    <span className="font-mono-brand text-[10px] uppercase tracking-[0.22em] text-white">
-                      Limited · 5 spots / month
-                    </span>
-                  </div>
+          <div className="apple-eyebrow inline-flex items-center gap-2">
+            <Gift className="h-3.5 w-3.5" aria-hidden />
+            Limited · 5 spots / month
+          </div>
+          <h2 className="apple-headline">
+            1-Week Free Trial.
+            <br />
+            <span style={{ color: "oklch(0.78 0.18 25)" }}>Zero risk. All proof.</span>
+          </h2>
+          <p className="apple-sub max-w-[560px]">
+            Pehle dekho, phir decide karo. Hum aapke business ke liye complete
+            starter pack 7 din mein build karke denge — bilkul free.
+          </p>
+          <div className="apple-cta-row">
+            <a href="#contact" className="apple-pill apple-pill-primary">
+              Claim my free week
+            </a>
+            <a href="#contact" className="apple-pill apple-pill-secondary">
+              Talk first
+            </a>
+          </div>
 
-                  <h2 className="font-display text-balance text-4xl font-bold leading-[1.05] tracking-[-0.035em] text-white md:text-6xl">
-                    1-Week Free Trial.
-                    <br />
-                    <span className="text-grad-red">Zero risk. All proof.</span>
-                  </h2>
+          <div className="mt-10 grid w-full max-w-[980px] gap-4 px-2 text-left md:mt-14 md:grid-cols-12 md:gap-6">
+            <ul className="grid gap-2.5 md:col-span-7 md:grid-cols-2">
+              {perks.map((perk) => (
+                <li
+                  key={perk}
+                  className="flex items-start gap-2.5 text-[13px] text-skyblue/85"
+                >
+                  <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-signal/15 ring-1 ring-signal/30">
+                    <Check className="h-3 w-3 text-signal" strokeWidth={3} />
+                  </span>
+                  <span>{perk}</span>
+                </li>
+              ))}
+            </ul>
 
-                  <p className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-skyblue/85">
-                    Pehle dekho, phir decide karo. Hum aapke business ke liye ek
-                    complete starter pack 7 din mein build karke denge —{" "}
-                    <span className="text-white">bilkul free</span>. Pasand aaye
-                    toh continue karein. Nahi, toh keep it. Yours.
-                  </p>
-
-                  <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-                    {perks.map((perk) => (
-                      <li
-                        key={perk}
-                        className="flex items-start gap-2.5 text-[14px] text-skyblue/90"
-                      >
-                        <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-signal/15 ring-1 ring-signal/30">
-                          <Check className="h-3 w-3 text-signal" strokeWidth={3} />
-                        </span>
-                        <span>{perk}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-                    <Magnetic>
-                      <a
-                        href="#contact"
-                        className="btn-lift btn-shimmer group inline-flex items-center gap-2 rounded-full bg-signal px-7 py-3.5 text-[14px] font-semibold text-white shadow-[0_20px_50px_-15px_rgba(229,57,53,0.6)]"
-                      >
-                        Claim my free week
-                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                      </a>
-                    </Magnetic>
-                    <p className="text-[12px] text-skyblue/60">
-                      No credit card. No contracts. No catch.
-                    </p>
-                  </div>
+            <div className="md:col-span-5">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl">
+                <div className="flex items-baseline justify-between">
+                  <span className="font-mono-brand text-[10px] uppercase tracking-[0.22em] text-skyblue/70">
+                    Starter Pack Value
+                  </span>
+                  <span className="text-[11px] text-skyblue/50 line-through">
+                    ₹24,999
+                  </span>
                 </div>
-
-                {/* Right: trust panel */}
-                <div className="md:col-span-5">
-                  <div
-                    className="relative rounded-2xl border border-white/10 bg-midnight/60 p-6 backdrop-blur-xl"
-                    style={{ transform: "translateZ(20px)" }}
-                  >
-                    <div className="flex items-baseline justify-between">
-                      <span className="font-mono-brand text-[10px] uppercase tracking-[0.22em] text-skyblue/70">
-                        Starter Pack Value
-                      </span>
-                      <span className="text-[11px] text-skyblue/50 line-through">
-                        ₹24,999
-                      </span>
-                    </div>
-                    <div className="mt-2 font-display text-5xl font-bold tracking-tight text-white md:text-6xl">
-                      ₹0
-                    </div>
-                    <div className="mt-1 text-[12px] uppercase tracking-[0.18em] text-signal">
-                      First week, on us
-                    </div>
-
-                    <div className="my-6 h-px w-full bg-white/10" />
-
-                    <ul className="space-y-3 text-[13px] text-skyblue/85">
-                      <TrustRow label="Delivery" value="7 days" />
-                      <TrustRow label="Strategy call" value="30 min · founder" />
-                      <TrustRow label="Cancellation" value="Anytime, no fee" />
-                    </ul>
-
-                    <div className="mt-6">
-                      <SpotsTicker total={5} daysPerSpot={6} />
-                    </div>
-                  </div>
+                <div className="mt-2 font-display text-4xl font-bold tracking-tight text-white">
+                  ₹0
+                </div>
+                <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-signal">
+                  First week, on us
+                </div>
+                <div className="my-5 h-px w-full bg-white/10" />
+                <ul className="space-y-2.5 text-[13px] text-skyblue/85">
+                  <TrustRow label="Delivery" value="7 days" />
+                  <TrustRow label="Strategy call" value="30 min · founder" />
+                  <TrustRow label="Cancellation" value="Anytime, no fee" />
+                </ul>
+                <div className="mt-5">
+                  <SpotsTicker total={5} daysPerSpot={6} />
                 </div>
               </div>
             </div>
-          </Tilt3D>
+          </div>
+
+          <div className="apple-tile-media" />
         </motion.div>
       </div>
     </section>
@@ -624,64 +597,77 @@ function About() {
   ];
 
   return (
-    <section id="about" className="relative overflow-hidden bg-background py-24 md:py-32">
-      <div className="grid-bg pointer-events-none absolute inset-0 opacity-30" aria-hidden />
-      <div className="glow-orb glow-orb-navy left-[-180px] top-32 h-[420px] w-[420px]" />
-      <div className="glow-orb glow-orb-red right-[-150px] bottom-20 h-[360px] w-[360px]" />
-
-      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
-        <div className="grid items-start gap-14 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <div className="eyebrow mb-5 inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-signal" /> About CoreSoft
-            </div>
-            <h2 className="font-display text-balance text-4xl font-bold leading-[1.05] tracking-[-0.035em] text-white md:text-6xl">
-              A Hisar studio
-              <br />
-              building <span className="text-grad-red">India's local heroes.</span>
-            </h2>
-            <p className="mt-6 text-pretty text-lg leading-relaxed text-skyblue/80">
-              CoreSoft Solutions started with one belief: every kirana, clinic and café in Haryana
-              deserves the same digital craft as a Bengaluru startup. We design, code and launch
-              premium websites — fast, transparent, and built to convert.
-            </p>
-            <p className="mt-4 text-pretty text-skyblue/70">
-              Hisar mein based, but trusted by businesses across Haryana, Punjab and Delhi NCR.
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-6 border-t border-white/10 pt-8">
-              <Stat k="50+" v="Businesses launched" />
-              <Stat k="98%" v="Client retention" />
-              <Stat k="2024" v="Founded in Hisar" />
+    <section id="about" className="bg-apple-canvas py-4 md:py-6">
+      <div className="mx-auto grid max-w-[1400px] gap-3 px-3 md:grid-cols-2 md:gap-5 md:px-5">
+        {/* Headline tile */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="apple-tile h-full"
+        >
+          <div className="apple-eyebrow">About CoreSoft</div>
+          <h2 className="apple-headline max-w-[460px]">
+            A Hisar studio building India's local heroes.
+          </h2>
+          <p className="apple-sub max-w-[440px]">
+            Every kirana, clinic and café in Haryana deserves the same craft as
+            a Bengaluru startup. We design, code and launch — fast, transparent,
+            built to convert.
+          </p>
+          <div className="apple-cta-row">
+            <a href="#contact" className="apple-pill apple-pill-primary">
+              Work with us
+            </a>
+            <a href="#stories" className="apple-pill apple-pill-secondary">
+              See stories
+            </a>
+          </div>
+          <div className="apple-tile-media">
+            <div className="grid w-full max-w-[420px] grid-cols-3 gap-3 pb-2">
+              <Stat k="50+" v="Launched" />
+              <Stat k="98%" v="Retained" />
+              <Stat k="2024" v="Founded" />
             </div>
           </div>
+        </motion.div>
 
-          <div className="md:col-span-7">
-            <div className="grid gap-4 sm:grid-cols-2">
-              {values.map((val, i) => (
-                <motion.div
+        {/* Values tile (dark) */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="apple-tile is-dark h-full"
+        >
+          <div className="apple-eyebrow">What we stand for</div>
+          <h2 className="apple-headline">
+            Four values.
+            <br />
+            Zero shortcuts.
+          </h2>
+          <div className="apple-tile-media">
+            <div className="grid w-full max-w-[520px] gap-3 pb-2 sm:grid-cols-2">
+              {values.map((val) => (
+                <div
                   key={val.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-left"
                 >
-                  <Tilt3D max={1.5} lift={2} depth={8} className="h-full">
-                    <div className="group h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all duration-300 hover:border-signal/30 hover:bg-white/[0.05]">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-grad-navy ring-1 ring-white/10 transition-transform duration-300 group-hover:scale-105">
-                        <val.icon className="h-5 w-5 text-skyblue" aria-hidden />
-                      </div>
-                      <h3 className="font-display mt-5 text-xl font-semibold tracking-tight text-white">
-                        {val.title}
-                      </h3>
-                      <p className="mt-2 text-[14px] leading-relaxed text-skyblue/75">{val.body}</p>
-                    </div>
-                  </Tilt3D>
-                </motion.div>
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 ring-1 ring-white/10">
+                    <val.icon className="h-4 w-4 text-skyblue" aria-hidden />
+                  </div>
+                  <h3 className="font-display mt-3 text-base font-semibold tracking-tight text-white">
+                    {val.title}
+                  </h3>
+                  <p className="mt-1 text-[12px] leading-relaxed text-skyblue/75">
+                    {val.body}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -689,47 +675,47 @@ function About() {
 
 function Stat({ k, v }: { k: string; v: string }) {
   return (
-    <div>
-      <div className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">{k}</div>
-      <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-skyblue/60">{v}</div>
+    <div className="text-center">
+      <div className="font-display text-2xl font-bold tracking-tight md:text-3xl">{k}</div>
+      <div className="mt-1 text-[10px] uppercase tracking-[0.18em] opacity-60">{v}</div>
     </div>
   );
 }
 
-/* ───────────────── TESTIMONIALS (grid + marquee) ───────────────── */
+/* ───────────────── TESTIMONIALS (Apple-style header) ───────────────── */
 function Testimonials() {
   return (
-    <section
-      id="stories"
-      className="relative overflow-hidden bg-midnight py-24 text-white md:py-32"
-    >
-      <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute left-1/2 top-0 h-[500px] w-[1100px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(13,71,161,0.45),transparent)]" />
-        <div className="absolute -right-40 bottom-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(closest-side,rgba(229,57,53,0.18),transparent)]" />
-      </div>
-
-      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
-        <div className="mb-14 text-center">
-          <div className="mb-5 inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-skyblue">
-            <span className="h-px w-8 bg-skyblue/40" />
-            Client Results
-            <span className="h-px w-8 bg-skyblue/40" />
-          </div>
-          <h2 className="text-balance text-5xl font-bold leading-[1.02] tracking-[-0.04em] md:text-7xl">
-            Real Businesses,{" "}
-            <span className="bg-gradient-to-br from-signal via-signal to-[#FF7A6E] bg-clip-text text-transparent">
-              Real Growth
-            </span>
+    <section id="stories" className="bg-apple-canvas py-4 md:py-6">
+      <div className="mx-auto max-w-[1400px] px-3 md:px-5">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="apple-tile is-dark"
+        >
+          <div className="apple-eyebrow">Client Results</div>
+          <h2 className="apple-headline">
+            Real businesses.
+            <br />
+            Real growth.
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-skyblue/80">
-            Haryana ke local businesses jo CoreSoft ke saath scale kar rahe hain — unke words mein.
+          <p className="apple-sub max-w-[560px]">
+            Haryana ke local businesses jo CoreSoft ke saath scale kar rahe hain
+            — unke words mein.
           </p>
-          <p className="mt-3 text-[12px] uppercase tracking-[0.18em] text-skyblue/50">
-            Tap any card to see their result
-          </p>
-        </div>
-
-        <TestimonialsGrid />
+          <div className="apple-cta-row">
+            <a href="#contact" className="apple-pill apple-pill-primary">
+              Become a story
+            </a>
+            <a href="#trial" className="apple-pill apple-pill-secondary">
+              Try free
+            </a>
+          </div>
+          <div className="mt-10 w-full">
+            <TestimonialsGrid />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
