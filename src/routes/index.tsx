@@ -327,67 +327,67 @@ function Services() {
   );
 }
 
-/* ───────────────── INDUSTRIES ───────────────── */
+/* ───────────────── INDUSTRIES (Apple-style tile grid) ───────────────── */
 function Industries() {
   return (
-    <section id="industries" className="bg-background py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <div className="grid gap-5 md:grid-cols-2">
-          <IndustryCard
-            icon={UtensilsCrossed}
-            title="Restaurant & Café"
-            power="Online ordering. Built for full tables."
-            image={deviceRestaurant}
-          />
-          <IndustryCard
-            icon={Stethoscope}
-            title="Doctor & Clinic"
-            power="Google Ranking #1. Built for trust."
-            image={deviceDoctor}
-            tone="dark"
-          />
-          <IndustryCard
-            icon={Scissors}
-            title="Salon & Spa"
-            power="Instagram-first booking. Built for beauty."
-            image={deviceSalon}
-            tone="dark"
-          />
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
-          >
-            <Tilt3D max={1.5} lift={2} depth={7} className="h-full">
-              <div className="bg-grad-navy relative h-full overflow-hidden rounded-3xl p-10 text-white shadow-card-soft md:p-12">
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-signal" />
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-skyblue">
-                    Every Other Business
-                  </span>
-                </div>
-                <h3 className="mt-5 max-w-md text-balance text-3xl font-bold leading-[1.05] md:text-[42px]">
-                  Built for you. Whatever you do.
-                </h3>
-                <p className="mt-4 max-w-md text-skyblue/80">
-                  Retail, services, contractors — agar aap local hain aur grow karna chahte ho,
-                  hum aapke liye banayenge.
-                </p>
-                <Magnetic>
-                  <a
-                    href="#contact"
-                    className="btn-lift btn-shimmer group mt-8 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 text-[13px] font-semibold uppercase tracking-wider text-white shadow-[0_18px_40px_-15px_rgba(229,57,53,0.6)]"
-                    style={{ transform: "translateZ(20px)" }}
-                  >
-                    Talk to us
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </a>
-                </Magnetic>
-              </div>
-            </Tilt3D>
-          </motion.div>
-        </div>
+    <section id="industries" className="bg-apple-canvas py-4 md:py-6">
+      <div className="mx-auto grid max-w-[1400px] gap-3 px-3 md:grid-cols-2 md:gap-5 md:px-5">
+        <IndustryCard
+          icon={UtensilsCrossed}
+          title="Restaurant & Café"
+          power="Online ordering. Built for full tables."
+          image={deviceRestaurant}
+        />
+        <IndustryCard
+          icon={Stethoscope}
+          title="Doctor & Clinic"
+          power="Google Ranking #1. Built for trust."
+          image={deviceDoctor}
+          tone="dark"
+        />
+        <IndustryCard
+          icon={Scissors}
+          title="Salon & Spa"
+          power="Instagram-first booking. Built for beauty."
+          image={deviceSalon}
+          tone="dark"
+        />
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="h-full"
+        >
+          <article className="apple-tile h-full min-h-[480px] md:min-h-[560px]">
+            <div className="apple-eyebrow">Every Other Business</div>
+            <h3 className="apple-headline max-w-[420px]">
+              Built for you. Whatever you do.
+            </h3>
+            <p className="apple-sub max-w-[460px]">
+              Retail, services, contractors — agar aap local hain aur grow karna
+              chahte ho, hum aapke liye banayenge.
+            </p>
+            <div className="apple-cta-row">
+              <a href="#contact" className="apple-pill apple-pill-primary">
+                Talk to us
+              </a>
+              <a href="#trial" className="apple-pill apple-pill-secondary">
+                Try free
+              </a>
+            </div>
+            <div className="apple-tile-media">
+              <div
+                aria-hidden
+                className="mx-auto h-32 w-32 rounded-full md:h-44 md:w-44"
+                style={{
+                  background:
+                    "radial-gradient(circle at 30% 30%, oklch(0.62 0.22 27 / 0.55), transparent 60%), radial-gradient(circle at 70% 70%, oklch(0.50 0.15 260 / 0.5), transparent 60%)",
+                }}
+              />
+            </div>
+          </article>
+        </motion.div>
       </div>
     </section>
   );
