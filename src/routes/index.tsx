@@ -501,7 +501,7 @@ function FreeTrial() {
                     </ul>
 
                     <div className="mt-6">
-                      <SpotsTicker claimed={2} total={5} />
+                      <SpotsTicker total={5} daysPerSpot={6} />
                     </div>
                   </div>
                 </div>
