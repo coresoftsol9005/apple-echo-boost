@@ -3,15 +3,14 @@ import { useRef } from "react";
 type Props = {
   children: React.ReactNode;
   className?: string;
-  as?: "div" | "section" | "article";
 };
 
 /**
  * Wrap any container to give it a cursor-following red brand spotlight.
- * The child must be relative; this component sets `relative` itself.
- * Add `.spotlight` (already injected) which fades in on hover.
+ * The wrapper is `relative`; pair with the `.spotlight` overlay (auto-injected)
+ * which fades in on hover.
  */
-export function Spotlight({ children, className = "", as: Tag = "div" }: Props) {
+export function Spotlight({ children, className = "" }: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -23,14 +22,13 @@ export function Spotlight({ children, className = "", as: Tag = "div" }: Props) 
   };
 
   return (
-    <Tag
-      // @ts-expect-error - polymorphic ref
+    <div
       ref={ref}
       onMouseMove={onMove}
       className={`spotlight-host relative ${className}`}
     >
       <span className="spotlight" aria-hidden />
       {children}
-    </Tag>
+    </div>
   );
 }
