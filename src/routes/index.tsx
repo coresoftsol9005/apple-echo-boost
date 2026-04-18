@@ -282,7 +282,7 @@ function Industries() {
                 <Magnetic>
                   <a
                     href="#contact"
-                    className="btn-lift group mt-8 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 text-[13px] font-semibold uppercase tracking-wider text-white"
+                    className="btn-lift btn-shimmer group mt-8 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 text-[13px] font-semibold uppercase tracking-wider text-white shadow-[0_18px_40px_-15px_rgba(229,57,53,0.6)]"
                     style={{ transform: "translateZ(20px)" }}
                   >
                     Talk to us

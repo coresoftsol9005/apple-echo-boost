@@ -22,13 +22,14 @@ export function IndustryCard({ icon: Icon, title, power, image, tone = "light" }
     >
       <Tilt3D max={1.5} lift={2} depth={9} className="h-full">
         <article
-          className={`group relative h-full overflow-hidden rounded-3xl border border-white/10 text-white ${
+          className={`spotlight-host group relative h-full overflow-hidden rounded-3xl border border-white/10 text-white ${
             dark ? "bg-midnight" : "bg-grad-navy"
           } shadow-card-soft transition-all duration-500 hover:border-signal/40 hover:shadow-red-glow`}
         >
-          <div className="px-8 pt-10 md:px-12 md:pt-14">
+          <span className="spotlight" aria-hidden />
+          <div className="relative z-[2] px-8 pt-10 md:px-12 md:pt-14">
             <div className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-signal" />
+              <span className="h-1.5 w-1.5 rounded-full bg-signal pulse-ring" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-skyblue">
                 {title}
               </span>
@@ -38,24 +39,24 @@ export function IndustryCard({ icon: Icon, title, power, image, tone = "light" }
             </h3>
             <a
               href="#contact"
-              className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium text-signal transition-all duration-300 group-hover:gap-2.5"
+              className="link-underline mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium text-signal transition-all duration-300 group-hover:gap-2.5"
             >
               Learn more
               <span aria-hidden>→</span>
             </a>
             <div
-              className="mt-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10"
+              className="mt-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-signal/20 group-hover:ring-signal/40"
               style={{ transform: "translateZ(20px)" }}
             >
-              <Icon className="h-4 w-4 text-skyblue" aria-hidden />
+              <Icon className="h-4 w-4 text-skyblue transition-colors duration-300 group-hover:text-white" aria-hidden />
             </div>
           </div>
-          <div className="mt-6 flex justify-center px-6 pb-6" style={{ transform: "translateZ(30px)" }}>
+          <div className="relative z-[2] mt-6 flex justify-center px-6 pb-6" style={{ transform: "translateZ(30px)" }}>
             <img
               src={image}
               alt={`${title} interface preview`}
               loading="lazy"
-              className="h-auto w-full max-w-[420px] select-none drop-shadow-2xl transition-transform duration-700 group-hover:scale-[1.03]"
+              className="h-auto w-full max-w-[420px] select-none drop-shadow-2xl transition-transform duration-700 group-hover:-translate-y-2 group-hover:scale-[1.04]"
             />
           </div>
         </article>
