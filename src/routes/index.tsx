@@ -173,7 +173,7 @@ function MetricsBar() {
     { k: "30 min", v: "Response on WhatsApp" },
   ];
   return (
-    <section className="border-y border-white/8 bg-midnight/40">
+    <section className="border-y border-white/10 bg-midnight/40">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-5 py-10 md:grid-cols-4 md:px-8 md:py-14">
         {stats.map((s, i) => (
           <motion.div
@@ -184,7 +184,7 @@ function MetricsBar() {
             transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
           >
             <Tilt3D max={2.5} lift={1.5} glare={false} className="h-full">
-              <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-5 text-center md:text-left">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center md:text-left">
                 <div className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">{s.k}</div>
                 <div className="mt-1 text-[12px] uppercase tracking-[0.16em] text-skyblue/70">{s.v}</div>
               </div>
@@ -215,7 +215,7 @@ function Services() {
             </h2>
           </div>
           <div className="md:col-span-5">
-            <p className="text-pretty text-lg leading-relaxed text-text-mid">
+            <p className="text-pretty text-lg leading-relaxed text-skyblue/80">
               Chahe restaurant ho, clinic ho, ya salon — humne har business ke liye
               custom packages banaye hain. Professional sites, Google ranking, aur
               Instagram growth — sab ek hi jagah, transparent pricing.
