@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 
 type Props = {
@@ -8,11 +8,11 @@ type Props = {
   max?: number;
   /** Perspective in px (default 1000) */
   perspective?: number;
-  /** Lift the element on hover (default 0 = none) */
+  /** Lift the element on hover in px (default 0) */
   lift?: number;
   /** Add a subtle glare highlight (default true) */
   glare?: boolean;
-  /** Make children pop forward in 3D (default 0) */
+  /** Pop children forward in 3D (default 0) */
   depth?: number;
 };
 
@@ -36,12 +36,16 @@ export function Tilt3D({
   const spring = { stiffness: 180, damping: 18, mass: 0.6 };
   const sx = useSpring(px, spring);
   const sy = useSpring(py, spring);
+  const liftMv = useSpring(0, spring);
 
   const rotateY = useTransform(sx, [0, 1], [-max, max]);
   const rotateX = useTransform(sy, [0, 1], [max, -max]);
-  const glareX = useTransform(sx, [0, 1], ["0%", "100%"]);
-  const glareY = useTransform(sy, [0, 1], ["0%", "100%"]);
+  const translateY = useTransform(liftMv, [0, 1], [0, -lift]);
+
+  const glareXPct = useTransform(sx, (v) => `${v * 100}%`);
+  const glareYPct = useTransform(sy, (v) => `${v * 100}%`);
   const glareOpacity = useSpring(0, spring);
+  const glareBg = useMotionTemplate`radial-gradient(circle at ${glareXPct} ${glareYPct}, rgba(255,255,255,0.7), rgba(255,255,255,0) 45%)`;
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const r = ref.current?.getBoundingClientRect();
@@ -49,12 +53,14 @@ export function Tilt3D({
     px.set((e.clientX - r.left) / r.width);
     py.set((e.clientY - r.top) / r.height);
     glareOpacity.set(0.18);
+    if (lift) liftMv.set(1);
   };
 
   const handleLeave = () => {
     px.set(0.5);
     py.set(0.5);
     glareOpacity.set(0);
+    liftMv.set(0);
   };
 
   return (
@@ -62,36 +68,31 @@ export function Tilt3D({
       ref={ref}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      style={{
-        perspective,
-        transformStyle: "preserve-3d",
-      }}
+      style={{ perspective, transformStyle: "preserve-3d" }}
       className={className}
     >
       <motion.div
         style={{
           rotateX,
           rotateY,
-          y: lift ? useTransform(glareOpacity, [0, 0.18], [0, -lift]) : 0,
+          y: translateY,
           transformStyle: "preserve-3d",
         }}
         className="relative h-full w-full will-change-transform"
       >
-        <div style={{ transform: `translateZ(${depth}px)`, transformStyle: "preserve-3d" }}>
+        <div
+          style={{
+            transform: depth ? `translateZ(${depth}px)` : undefined,
+            transformStyle: "preserve-3d",
+          }}
+        >
           {children}
         </div>
         {glare && (
           <motion.div
             aria-hidden
             className="pointer-events-none absolute inset-0 rounded-[inherit] mix-blend-overlay"
-            style={{
-              opacity: glareOpacity,
-              background: useTransform(
-                [glareX, glareY] as never,
-                ([x, y]: string[]) =>
-                  `radial-gradient(circle at ${x} ${y}, rgba(255,255,255,0.7), rgba(255,255,255,0) 45%)`
-              ),
-            }}
+            style={{ opacity: glareOpacity, background: glareBg }}
           />
         )}
       </motion.div>
