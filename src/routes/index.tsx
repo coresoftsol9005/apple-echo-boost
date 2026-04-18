@@ -173,7 +173,7 @@ function MetricsBar() {
     { k: "30 min", v: "Response on WhatsApp" },
   ];
   return (
-    <section className="border-y border-white/8 bg-navy-dk/40">
+    <section className="border-y border-white/8 bg-midnight/40">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-5 py-10 md:grid-cols-4 md:px-8 md:py-14">
         {stats.map((s, i) => (
           <motion.div
