@@ -50,7 +50,7 @@ export function BrandsMarquee() {
 function BrandTile({ brand }: { brand: Brand }) {
   const { Icon, name, tag } = brand;
   return (
-    <div className="group flex shrink-0 items-center gap-4 rounded-2xl border border-white/8 bg-white/[0.02] px-6 py-3.5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-signal/40 hover:bg-white/[0.05]">
+    <div className="group flex shrink-0 items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.02] px-6 py-3.5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-signal/40 hover:bg-white/[0.05]">
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-grad-navy ring-1 ring-white/10 transition-transform duration-300 group-hover:scale-105">
         <Icon className="h-5 w-5 text-skyblue" aria-hidden />
       </div>
