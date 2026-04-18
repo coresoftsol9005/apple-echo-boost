@@ -74,7 +74,8 @@ function Hero() {
   const orbY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   return (
-    <section ref={heroRef} className="bg-hero relative overflow-hidden pt-28 text-white md:pt-36">
+    <section ref={heroRef} className="spotlight-host bg-hero relative overflow-hidden pt-28 text-white md:pt-36">
+      <span className="spotlight" aria-hidden />
       <motion.div className="pointer-events-none absolute inset-0" style={{ y: orbY }} aria-hidden>
         <div className="glow-orb glow-orb-navy left-1/2 top-[-200px] h-[600px] w-[1100px] -translate-x-1/2" />
         <div className="glow-orb glow-orb-red right-[-200px] top-40 h-[420px] w-[420px]" />
@@ -126,7 +127,7 @@ function Hero() {
           <Magnetic>
             <a
               href="#contact"
-              className="btn-lift group inline-flex items-center gap-2 rounded-full bg-signal px-7 py-3.5 text-[14px] font-semibold text-white shadow-[0_20px_50px_-15px_rgba(229,57,53,0.6)]"
+              className="btn-lift btn-shimmer group inline-flex items-center gap-2 rounded-full bg-signal px-7 py-3.5 text-[14px] font-semibold text-white shadow-[0_20px_50px_-15px_rgba(229,57,53,0.6)]"
             >
               Get a free audit
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -135,7 +136,7 @@ function Hero() {
           <Magnetic strength={4}>
             <a
               href="#industries"
-              className="btn-lift inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-[14px] font-semibold text-white hover:bg-white/10"
+              className="btn-lift btn-ghost-brand inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-[14px] font-semibold text-white"
             >
               See what we build
             </a>
@@ -281,7 +282,7 @@ function Industries() {
                 <Magnetic>
                   <a
                     href="#contact"
-                    className="btn-lift group mt-8 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 text-[13px] font-semibold uppercase tracking-wider text-white"
+                    className="btn-lift btn-shimmer group mt-8 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 text-[13px] font-semibold uppercase tracking-wider text-white shadow-[0_18px_40px_-15px_rgba(229,57,53,0.6)]"
                     style={{ transform: "translateZ(20px)" }}
                   >
                     Talk to us

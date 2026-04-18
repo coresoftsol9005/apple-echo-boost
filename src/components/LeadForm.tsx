@@ -87,10 +87,10 @@ export function LeadForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="inline-flex items-center gap-2 rounded-full bg-signal px-7 py-3 text-[13px] font-semibold uppercase tracking-[0.12em] text-white transition hover:brightness-110 disabled:opacity-60"
+          className="btn-lift btn-shimmer group inline-flex items-center gap-2 rounded-full bg-signal px-7 py-3 text-[13px] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_18px_40px_-15px_rgba(229,57,53,0.6)] disabled:opacity-60 disabled:hover:transform-none"
         >
           {submitting ? "Opening…" : "Request Free Audit"}
-          <span aria-hidden>→</span>
+          <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
         </button>
       </div>
 
