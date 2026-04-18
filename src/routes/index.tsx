@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Toaster } from "sonner";
-import { UtensilsCrossed, Stethoscope, Scissors, ArrowRight, Instagram, Facebook } from "lucide-react";
+import { UtensilsCrossed, Stethoscope, Scissors, ArrowRight, Instagram, Facebook, Sparkles, Target, Users, Zap } from "lucide-react";
 
 import { Navbar } from "@/components/Navbar";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
