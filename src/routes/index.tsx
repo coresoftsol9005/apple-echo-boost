@@ -12,6 +12,7 @@ import { CoreSoftLogo } from "@/components/CoreSoftLogo";
 import { Tilt3D } from "@/components/Tilt3D";
 import { Magnetic } from "@/components/Magnetic";
 import { TestimonialsGrid } from "@/components/TestimonialsGrid";
+import { BrandsMarquee } from "@/components/BrandsMarquee";
 
 import heroLaptop from "@/assets/hero-laptop.jpg";
 import deviceRestaurant from "@/assets/device-restaurant.jpg";
@@ -47,6 +48,7 @@ function Index() {
       <WhatsAppFab />
 
       <Hero />
+      <BrandsMarquee />
       <MetricsBar />
       <Services />
       <Industries />
