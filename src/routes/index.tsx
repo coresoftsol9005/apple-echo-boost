@@ -526,22 +526,27 @@ function TrustRow({ label, value }: { label: string; value: string }) {
 function SpotsTicker({ claimed, total }: { claimed: number; total: number }) {
   const left = Math.max(total - claimed, 0);
   const pct = Math.min(100, (claimed / total) * 100);
-  const monthName = new Date().toLocaleString("en-US", { month: "long" });
 
-  const computeRemaining = () => {
-    const now = new Date();
-    const end = new Date(now.getFullYear(), now.getMonth() + 1, 1).getTime();
-    const diff = Math.max(end - now.getTime(), 0);
-    const days = Math.floor(diff / 86_400_000);
-    const hours = Math.floor((diff % 86_400_000) / 3_600_000);
-    const mins = Math.floor((diff % 3_600_000) / 60_000);
-    const secs = Math.floor((diff % 60_000) / 1000);
-    return { days, hours, mins, secs };
-  };
+  const [mounted, setMounted] = useState(false);
+  const [t, setT] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
+  const [monthName, setMonthName] = useState("This month");
 
-  const [t, setT] = useState(computeRemaining);
   useEffect(() => {
-    const id = setInterval(() => setT(computeRemaining()), 1000);
+    const compute = () => {
+      const now = new Date();
+      const end = new Date(now.getFullYear(), now.getMonth() + 1, 1).getTime();
+      const diff = Math.max(end - now.getTime(), 0);
+      return {
+        days: Math.floor(diff / 86_400_000),
+        hours: Math.floor((diff % 86_400_000) / 3_600_000),
+        mins: Math.floor((diff % 3_600_000) / 60_000),
+        secs: Math.floor((diff % 60_000) / 1000),
+      };
+    };
+    setMonthName(new Date().toLocaleString("en-US", { month: "long" }));
+    setT(compute());
+    setMounted(true);
+    const id = setInterval(() => setT(compute()), 1000);
     return () => clearInterval(id);
   }, []);
 
@@ -574,8 +579,8 @@ function SpotsTicker({ claimed, total }: { claimed: number; total: number }) {
 
       <div className="mt-3 flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-skyblue/60">
         <span>Window closes in</span>
-        <span className="font-mono-brand text-white">
-          {t.days}d <span className="text-skyblue/40">·</span> {pad(t.hours)}:{pad(t.mins)}:{pad(t.secs)}
+        <span className="font-mono-brand text-white" suppressHydrationWarning>
+          {mounted ? `${t.days}d · ${pad(t.hours)}:${pad(t.mins)}:${pad(t.secs)}` : "—"}
         </span>
       </div>
     </div>
