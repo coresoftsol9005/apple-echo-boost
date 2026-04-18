@@ -523,13 +523,14 @@ function TrustRow({ label, value }: { label: string; value: string }) {
   );
 }
 
-function SpotsTicker({ claimed, total }: { claimed: number; total: number }) {
-  const left = Math.max(total - claimed, 0);
-  const pct = Math.min(100, (claimed / total) * 100);
-
+function SpotsTicker({ total, daysPerSpot = 6 }: { total: number; daysPerSpot?: number }) {
   const [mounted, setMounted] = useState(false);
   const [t, setT] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
   const [monthName, setMonthName] = useState("This month");
+  const [claimed, setClaimed] = useState(0);
+
+  const left = Math.max(total - claimed, 0);
+  const pct = Math.min(100, (claimed / total) * 100);
 
   useEffect(() => {
     const compute = () => {
