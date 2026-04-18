@@ -81,6 +81,12 @@ function Hero() {
   const floatX = useSpring(useTransform(mx, [-0.5, 0.5], [-14, 14]), spring);
   const floatY = useSpring(useTransform(my, [-0.5, 0.5], [-10, 10]), spring);
 
+  // Derived parallax values for floating badges (must be at top level)
+  const ratingX = useTransform(floatX, (v) => -v * 0.7);
+  const ratingY = useTransform(floatY, (v) => -v * 0.7);
+  const shipX = useTransform(floatX, (v) => v * 0.5);
+  const shipY = useTransform(floatY, (v) => -v * 0.4);
+
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = showcaseRef.current;
     if (!el) return;
@@ -221,8 +227,8 @@ function Hero() {
             {/* Floating badge: rating */}
             <motion.div
               style={{
-                x: useTransform(floatX, (v) => -v * 0.7),
-                y: useTransform(floatY, (v) => -v * 0.7),
+                x: ratingX,
+                y: ratingY,
                 transform: "translateZ(80px)",
               }}
               className="absolute -right-4 top-1/3 hidden flex-col gap-1 rounded-2xl border border-white/10 bg-midnight/85 px-4 py-3 text-left shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl md:flex"
@@ -236,8 +242,8 @@ function Hero() {
             {/* Floating badge: 7-day delivery */}
             <motion.div
               style={{
-                x: useTransform(floatX, (v) => v * 0.5),
-                y: useTransform(floatY, (v) => -v * 0.4),
+                x: shipX,
+                y: shipY,
                 transform: "translateZ(40px)",
               }}
               className="absolute -bottom-4 left-1/4 hidden items-center gap-2 rounded-full border border-signal/30 bg-signal/10 px-4 py-2 text-[12px] font-semibold text-white shadow-[0_18px_40px_-15px_rgba(229,57,53,0.5)] backdrop-blur-xl md:flex"
