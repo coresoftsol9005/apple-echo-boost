@@ -597,64 +597,77 @@ function About() {
   ];
 
   return (
-    <section id="about" className="relative overflow-hidden bg-background py-24 md:py-32">
-      <div className="grid-bg pointer-events-none absolute inset-0 opacity-30" aria-hidden />
-      <div className="glow-orb glow-orb-navy left-[-180px] top-32 h-[420px] w-[420px]" />
-      <div className="glow-orb glow-orb-red right-[-150px] bottom-20 h-[360px] w-[360px]" />
-
-      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
-        <div className="grid items-start gap-14 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <div className="eyebrow mb-5 inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-signal" /> About CoreSoft
-            </div>
-            <h2 className="font-display text-balance text-4xl font-bold leading-[1.05] tracking-[-0.035em] text-white md:text-6xl">
-              A Hisar studio
-              <br />
-              building <span className="text-grad-red">India's local heroes.</span>
-            </h2>
-            <p className="mt-6 text-pretty text-lg leading-relaxed text-skyblue/80">
-              CoreSoft Solutions started with one belief: every kirana, clinic and café in Haryana
-              deserves the same digital craft as a Bengaluru startup. We design, code and launch
-              premium websites — fast, transparent, and built to convert.
-            </p>
-            <p className="mt-4 text-pretty text-skyblue/70">
-              Hisar mein based, but trusted by businesses across Haryana, Punjab and Delhi NCR.
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-6 border-t border-white/10 pt-8">
-              <Stat k="50+" v="Businesses launched" />
-              <Stat k="98%" v="Client retention" />
-              <Stat k="2024" v="Founded in Hisar" />
+    <section id="about" className="bg-apple-canvas py-4 md:py-6">
+      <div className="mx-auto grid max-w-[1400px] gap-3 px-3 md:grid-cols-2 md:gap-5 md:px-5">
+        {/* Headline tile */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="apple-tile h-full min-h-[480px] md:min-h-[560px]"
+        >
+          <div className="apple-eyebrow">About CoreSoft</div>
+          <h2 className="apple-headline max-w-[460px]">
+            A Hisar studio building India's local heroes.
+          </h2>
+          <p className="apple-sub max-w-[440px]">
+            Every kirana, clinic and café in Haryana deserves the same craft as
+            a Bengaluru startup. We design, code and launch — fast, transparent,
+            built to convert.
+          </p>
+          <div className="apple-cta-row">
+            <a href="#contact" className="apple-pill apple-pill-primary">
+              Work with us
+            </a>
+            <a href="#stories" className="apple-pill apple-pill-secondary">
+              See stories
+            </a>
+          </div>
+          <div className="apple-tile-media">
+            <div className="grid w-full max-w-[420px] grid-cols-3 gap-3 pb-2">
+              <Stat k="50+" v="Launched" />
+              <Stat k="98%" v="Retained" />
+              <Stat k="2024" v="Founded" />
             </div>
           </div>
+        </motion.div>
 
-          <div className="md:col-span-7">
-            <div className="grid gap-4 sm:grid-cols-2">
-              {values.map((val, i) => (
-                <motion.div
+        {/* Values tile (dark) */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="apple-tile is-dark h-full min-h-[480px] md:min-h-[560px]"
+        >
+          <div className="apple-eyebrow">What we stand for</div>
+          <h2 className="apple-headline">
+            Four values.
+            <br />
+            Zero shortcuts.
+          </h2>
+          <div className="apple-tile-media">
+            <div className="grid w-full max-w-[520px] gap-3 pb-2 sm:grid-cols-2">
+              {values.map((val) => (
+                <div
                   key={val.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-left"
                 >
-                  <Tilt3D max={1.5} lift={2} depth={8} className="h-full">
-                    <div className="group h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all duration-300 hover:border-signal/30 hover:bg-white/[0.05]">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-grad-navy ring-1 ring-white/10 transition-transform duration-300 group-hover:scale-105">
-                        <val.icon className="h-5 w-5 text-skyblue" aria-hidden />
-                      </div>
-                      <h3 className="font-display mt-5 text-xl font-semibold tracking-tight text-white">
-                        {val.title}
-                      </h3>
-                      <p className="mt-2 text-[14px] leading-relaxed text-skyblue/75">{val.body}</p>
-                    </div>
-                  </Tilt3D>
-                </motion.div>
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 ring-1 ring-white/10">
+                    <val.icon className="h-4 w-4 text-skyblue" aria-hidden />
+                  </div>
+                  <h3 className="font-display mt-3 text-base font-semibold tracking-tight text-white">
+                    {val.title}
+                  </h3>
+                  <p className="mt-1 text-[12px] leading-relaxed text-skyblue/75">
+                    {val.body}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
