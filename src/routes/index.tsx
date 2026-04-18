@@ -71,18 +71,19 @@ function Hero() {
   const orbY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   return (
-    <section ref={heroRef} className="relative overflow-hidden bg-midnight pt-28 text-white md:pt-36">
-      <motion.div className="pointer-events-none absolute inset-0 opacity-60" style={{ y: orbY }} aria-hidden>
-        <div className="absolute -top-40 left-1/2 h-[600px] w-[1100px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(13,71,161,0.55),transparent)]" />
-        <div className="absolute right-[-200px] top-40 h-[400px] w-[400px] rounded-full bg-[radial-gradient(closest-side,rgba(229,57,53,0.18),transparent)]" />
+    <section ref={heroRef} className="bg-hero relative overflow-hidden pt-28 text-white md:pt-36">
+      <motion.div className="pointer-events-none absolute inset-0" style={{ y: orbY }} aria-hidden>
+        <div className="glow-orb glow-orb-navy left-1/2 top-[-200px] h-[600px] w-[1100px] -translate-x-1/2" />
+        <div className="glow-orb glow-orb-red right-[-200px] top-40 h-[420px] w-[420px]" />
       </motion.div>
+      <div className="grid-bg pointer-events-none absolute inset-0 opacity-40" aria-hidden />
 
       <div className="relative mx-auto max-w-6xl px-5 text-center md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-skyblue backdrop-blur"
+          className="eyebrow mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-signal" /> Hisar · Digital Media · Business Audits
         </motion.div>
@@ -91,12 +92,12 @@ function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="group mx-auto max-w-6xl text-balance text-[52px] font-bold leading-[0.98] tracking-[-0.045em] md:text-[112px] lg:text-[128px]"
+          className="font-display group mx-auto max-w-6xl text-balance text-[52px] font-bold leading-[0.98] tracking-[-0.045em] md:text-[112px] lg:text-[128px]"
         >
-          <span className="inline-block bg-gradient-to-br from-white via-white to-[#90CAF9] bg-clip-text text-transparent transition-all duration-500 group-hover:from-white group-hover:via-[#FFCDD2] group-hover:to-[#E53935] group-hover:[text-shadow:0_0_60px_rgba(229,57,53,0.25)]">
+          <span className="inline-block bg-gradient-to-br from-white via-white to-light-blue bg-clip-text text-transparent transition-all duration-500 group-hover:from-white group-hover:via-[#FFCDD2] group-hover:to-[#E53935] group-hover:[text-shadow:0_0_60px_rgba(229,57,53,0.25)]">
             Innovation for
           </span>{" "}
-          <span className="relative inline-block bg-gradient-to-br from-white via-[#90CAF9] to-[#90CAF9] bg-clip-text text-transparent transition-all duration-500 group-hover:from-[#E53935] group-hover:via-white group-hover:to-[#90CAF9]">
+          <span className="relative inline-block bg-gradient-to-br from-white via-light-blue to-light-blue bg-clip-text text-transparent transition-all duration-500 group-hover:from-[#E53935] group-hover:via-white group-hover:to-light-blue">
             every business.
             <span className="pointer-events-none absolute -bottom-2 left-0 h-[3px] w-0 rounded-full bg-signal transition-all duration-700 group-hover:w-full" />
           </span>
@@ -173,7 +174,7 @@ function MetricsBar() {
     { k: "30 min", v: "Response on WhatsApp" },
   ];
   return (
-    <section className="border-y border-border bg-secondary/40">
+    <section className="border-y border-white/10 bg-midnight/40">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-5 py-10 md:grid-cols-4 md:px-8 md:py-14">
         {stats.map((s, i) => (
           <motion.div
@@ -184,9 +185,9 @@ function MetricsBar() {
             transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
           >
             <Tilt3D max={2.5} lift={1.5} glare={false} className="h-full">
-              <div className="rounded-2xl bg-background/60 p-5 text-center md:text-left">
-                <div className="text-3xl font-bold tracking-tight text-navy md:text-4xl">{s.k}</div>
-                <div className="mt-1 text-[12px] uppercase tracking-[0.16em] text-slate-soft">{s.v}</div>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center md:text-left">
+                <div className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">{s.k}</div>
+                <div className="mt-1 text-[12px] uppercase tracking-[0.16em] text-skyblue/70">{s.v}</div>
               </div>
             </Tilt3D>
           </motion.div>
@@ -199,23 +200,23 @@ function MetricsBar() {
 /* ───────────────── SERVICES (the hook) ───────────────── */
 function Services() {
   return (
-    <section id="services" className="bg-background py-24 md:py-36">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
+    <section id="services" className="relative overflow-hidden bg-background py-24 md:py-36">
+      <div className="glow-orb glow-orb-navy left-[-200px] top-20 h-[400px] w-[400px]" />
+      <div className="glow-orb glow-orb-red right-[-150px] bottom-10 h-[320px] w-[320px]" />
+      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
         <div className="grid items-end gap-10 md:grid-cols-12">
           <div className="md:col-span-7">
-            <div className="mb-4 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-signal">
-              <span className="h-1.5 w-1.5 rounded-full bg-signal" /> The Hook
+            <div className="eyebrow mb-4 inline-flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-red-brand" /> The Hook
             </div>
-            <h2 className="text-balance text-4xl font-bold leading-[1.05] tracking-[-0.035em] text-navy md:text-6xl">
+            <h2 className="font-display text-balance text-4xl font-bold leading-[1.05] tracking-[-0.035em] text-white md:text-6xl">
               Apne Business ko
               <br />
-              <span className="bg-gradient-to-r from-navy via-navy to-signal bg-clip-text text-transparent">
-                Digital Banaiye.
-              </span>
+              <span className="text-grad-red">Digital Banaiye.</span>
             </h2>
           </div>
           <div className="md:col-span-5">
-            <p className="text-pretty text-lg leading-relaxed text-slate-soft">
+            <p className="text-pretty text-lg leading-relaxed text-skyblue/80">
               Chahe restaurant ho, clinic ho, ya salon — humne har business ke liye
               custom packages banaye hain. Professional sites, Google ranking, aur
               Instagram growth — sab ek hi jagah, transparent pricing.
@@ -230,7 +231,7 @@ function Services() {
 /* ───────────────── INDUSTRIES ───────────────── */
 function Industries() {
   return (
-    <section id="industries" className="bg-secondary/30 py-16 md:py-24">
+    <section id="industries" className="bg-background py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <div className="grid gap-5 md:grid-cols-2">
           <IndustryCard
@@ -260,7 +261,7 @@ function Industries() {
             transition={{ duration: 0.7 }}
           >
             <Tilt3D max={1.5} lift={2} depth={7} className="h-full">
-              <div className="relative h-full overflow-hidden rounded-3xl bg-gradient-to-br from-navy to-navy-deep p-10 text-white shadow-[0_30px_80px_-30px_rgba(13,71,161,0.6)] md:p-12">
+              <div className="bg-grad-navy relative h-full overflow-hidden rounded-3xl p-10 text-white shadow-card-soft md:p-12">
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-signal" />
                   <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-skyblue">

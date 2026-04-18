@@ -31,7 +31,10 @@ export function Navbar() {
           aria-label="CoreSoft Solutions home"
           className="group flex items-center transition-transform duration-300 hover:scale-[1.04]"
         >
-          <CoreSoftLogo className="h-12 w-auto md:h-14 lg:h-16 transition-all duration-300 group-hover:drop-shadow-[0_6px_24px_rgba(229,57,53,0.35)]" />
+          <CoreSoftLogo
+            variant="dark"
+            className="h-12 w-auto md:h-14 lg:h-16 transition-all duration-300 group-hover:drop-shadow-[0_6px_24px_rgba(229,57,53,0.45)]"
+          />
         </a>
         <ul className="hidden items-center gap-9 md:flex">
           {links.map((l) => (

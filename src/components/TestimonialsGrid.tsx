@@ -90,7 +90,7 @@ export function TestimonialsGrid() {
             className="h-full"
           >
             <Tilt3D max={1.5} lift={3} depth={10} className="h-full">
-              <article className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-white/8 bg-white/[0.03] p-7 backdrop-blur-sm transition-all duration-500 hover:border-signal/40 hover:bg-white/[0.05] hover:shadow-[0_30px_80px_-30px_rgba(229,57,53,0.4)] md:p-8">
+              <article className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm transition-all duration-500 hover:border-signal/40 hover:bg-white/[0.05] hover:shadow-[0_30px_80px_-30px_rgba(229,57,53,0.4)] md:p-8">
                 {/* corner glow */}
                 <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-signal/0 blur-3xl transition-all duration-700 group-hover:bg-signal/30" />
 
@@ -138,7 +138,7 @@ export function TestimonialsGrid() {
       </div>
 
       {/* Marquee strip */}
-      <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.02] py-4">
+      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] py-4">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-midnight to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-midnight to-transparent" />
         <div className="flex w-max animate-cs-marquee gap-12 pr-12">
