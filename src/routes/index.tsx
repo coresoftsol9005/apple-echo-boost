@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Toaster } from "sonner";
-import { UtensilsCrossed, Stethoscope, Scissors, ArrowRight, Instagram, Facebook, Sparkles, Target, Users, Zap } from "lucide-react";
+import { UtensilsCrossed, Stethoscope, Scissors, ArrowRight, Instagram, Facebook, Sparkles, Target, Users, Zap, Check, Gift } from "lucide-react";
 
 import { Navbar } from "@/components/Navbar";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
@@ -52,6 +52,7 @@ function Index() {
       <MetricsBar />
       <Services />
       <Industries />
+      <FreeTrial />
       <About />
       <Testimonials />
       <ContactSection />
@@ -384,6 +385,148 @@ function Industries() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* ───────────────── FREE TRIAL ───────────────── */
+function FreeTrial() {
+  const perks = [
+    "Free 1-page premium website (live in 7 days)",
+    "Google Business Profile setup & optimization",
+    "Logo + brand colors refresh",
+    "WhatsApp click-to-chat button + lead routing",
+    "1 Instagram reel mockup with captions",
+    "30-min strategy call with the founder",
+  ];
+
+  return (
+    <section
+      id="trial"
+      className="relative overflow-hidden bg-midnight py-20 text-white md:py-28"
+    >
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="absolute left-1/2 top-[-150px] h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(229,57,53,0.22),transparent)]" />
+        <div className="absolute -left-32 bottom-0 h-[360px] w-[360px] rounded-full bg-[radial-gradient(closest-side,rgba(13,71,161,0.45),transparent)]" />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Tilt3D max={1} lift={1} glare={false} className="w-full">
+            <div className="brand-border relative overflow-hidden rounded-3xl border border-white/10 bg-grad-navy p-8 shadow-card-soft md:p-14">
+              <div className="grid items-center gap-10 md:grid-cols-12">
+                {/* Left: copy */}
+                <div className="md:col-span-7">
+                  <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-signal/30 bg-signal/10 px-3 py-1.5">
+                    <Gift className="h-3.5 w-3.5 text-signal" />
+                    <span className="font-mono-brand text-[10px] uppercase tracking-[0.22em] text-white">
+                      Limited · 5 spots / month
+                    </span>
+                  </div>
+
+                  <h2 className="font-display text-balance text-4xl font-bold leading-[1.05] tracking-[-0.035em] text-white md:text-6xl">
+                    1-Week Free Trial.
+                    <br />
+                    <span className="text-grad-red">Zero risk. All proof.</span>
+                  </h2>
+
+                  <p className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-skyblue/85">
+                    Pehle dekho, phir decide karo. Hum aapke business ke liye ek
+                    complete starter pack 7 din mein build karke denge —{" "}
+                    <span className="text-white">bilkul free</span>. Pasand aaye
+                    toh continue karein. Nahi, toh keep it. Yours.
+                  </p>
+
+                  <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+                    {perks.map((perk) => (
+                      <li
+                        key={perk}
+                        className="flex items-start gap-2.5 text-[14px] text-skyblue/90"
+                      >
+                        <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-signal/15 ring-1 ring-signal/30">
+                          <Check className="h-3 w-3 text-signal" strokeWidth={3} />
+                        </span>
+                        <span>{perk}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+                    <Magnetic>
+                      <a
+                        href="#contact"
+                        className="btn-lift btn-shimmer group inline-flex items-center gap-2 rounded-full bg-signal px-7 py-3.5 text-[14px] font-semibold text-white shadow-[0_20px_50px_-15px_rgba(229,57,53,0.6)]"
+                      >
+                        Claim my free week
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </a>
+                    </Magnetic>
+                    <p className="text-[12px] text-skyblue/60">
+                      No credit card. No contracts. No catch.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right: trust panel */}
+                <div className="md:col-span-5">
+                  <div
+                    className="relative rounded-2xl border border-white/10 bg-midnight/60 p-6 backdrop-blur-xl"
+                    style={{ transform: "translateZ(20px)" }}
+                  >
+                    <div className="flex items-baseline justify-between">
+                      <span className="font-mono-brand text-[10px] uppercase tracking-[0.22em] text-skyblue/70">
+                        Starter Pack Value
+                      </span>
+                      <span className="text-[11px] text-skyblue/50 line-through">
+                        ₹24,999
+                      </span>
+                    </div>
+                    <div className="mt-2 font-display text-5xl font-bold tracking-tight text-white md:text-6xl">
+                      ₹0
+                    </div>
+                    <div className="mt-1 text-[12px] uppercase tracking-[0.18em] text-signal">
+                      First week, on us
+                    </div>
+
+                    <div className="my-6 h-px w-full bg-white/10" />
+
+                    <ul className="space-y-3 text-[13px] text-skyblue/85">
+                      <TrustRow label="Delivery" value="7 days" />
+                      <TrustRow label="Strategy call" value="30 min · founder" />
+                      <TrustRow label="Spots left this month" value="3 of 5" />
+                      <TrustRow label="Cancellation" value="Anytime, no fee" />
+                    </ul>
+
+                    <div className="mt-6 flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5">
+                      <span className="relative flex h-2 w-2">
+                        <span className="absolute inset-0 animate-ping rounded-full bg-signal opacity-70" />
+                        <span className="relative h-2 w-2 rounded-full bg-signal" />
+                      </span>
+                      <span className="text-[11px] uppercase tracking-[0.18em] text-skyblue/70">
+                        Onboarding new clients now
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Tilt3D>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function TrustRow({ label, value }: { label: string; value: string }) {
+  return (
+    <li className="flex items-center justify-between gap-4">
+      <span className="text-skyblue/60">{label}</span>
+      <span className="font-medium text-white">{value}</span>
+    </li>
   );
 }
 
