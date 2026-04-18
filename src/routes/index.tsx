@@ -64,10 +64,10 @@ function Hero() {
     offset: ["start start", "end start"],
   });
   const spring = { stiffness: 100, damping: 22, mass: 0.6 };
-  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.5], [18, 0]), spring);
-  const scale = useSpring(useTransform(scrollYProgress, [0, 0.4], [0.94, 1]), spring);
-  const lift = useSpring(useTransform(scrollYProgress, [0, 0.5], [80, 0]), spring);
-  const orbY = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.5], [10, 0]), spring);
+  const scale = useSpring(useTransform(scrollYProgress, [0, 0.4], [0.97, 1]), spring);
+  const lift = useSpring(useTransform(scrollYProgress, [0, 0.5], [40, 0]), spring);
+  const orbY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   return (
     <section ref={heroRef} className="relative overflow-hidden bg-midnight pt-28 text-white md:pt-36">
