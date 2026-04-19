@@ -268,24 +268,45 @@ function MetricsBar() {
     { k: "30 min", v: "Response on WhatsApp" },
   ];
   return (
-    <section className="border-y border-white/10 bg-midnight/40">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-5 py-10 md:grid-cols-4 md:px-8 md:py-14">
-        {stats.map((s, i) => (
-          <motion.div
-            key={s.k}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Tilt3D max={2.5} lift={1.5} glare={false} className="h-full">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center md:text-left">
-                <div className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">{s.k}</div>
-                <div className="mt-1 text-[12px] uppercase tracking-[0.16em] text-skyblue/70">{s.v}</div>
-              </div>
-            </Tilt3D>
-          </motion.div>
-        ))}
+    <section className="bg-apple-canvas py-4 md:py-6">
+      <div className="mx-auto max-w-[1400px] px-3 md:px-5">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="apple-tile"
+        >
+          <div className="apple-eyebrow">By the numbers</div>
+          <h2 className="apple-headline">
+            Built for results.
+            <br />
+            Measured in growth.
+          </h2>
+          <p className="apple-sub max-w-[560px]">
+            Real outcomes from real local businesses — fast delivery, steady
+            growth, and support that actually shows up.
+          </p>
+
+          <div className="mt-10 grid w-full max-w-[1100px] grid-cols-2 gap-3 md:mt-14 md:grid-cols-4 md:gap-5">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.k}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Tilt3D max={2} lift={1.5} glare={false} className="h-full">
+                  <div className="metric-chip">
+                    <div className="metric-chip-k">{s.k}</div>
+                    <div className="metric-chip-v">{s.v}</div>
+                  </div>
+                </Tilt3D>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
