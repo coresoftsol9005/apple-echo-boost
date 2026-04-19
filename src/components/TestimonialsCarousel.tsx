@@ -69,10 +69,7 @@ export function TestimonialsCarousel() {
     >
       <CarouselContent className="-ml-4">
         {quotes.map((q, i) => (
-          <CarouselItem
-            key={q.who}
-            className="basis-full pl-4 md:basis-1/2 lg:basis-1/2"
-          >
+          <CarouselItem key={q.who} className="basis-full pl-4 md:basis-1/2 lg:basis-1/2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
