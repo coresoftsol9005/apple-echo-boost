@@ -71,7 +71,8 @@ function Hero() {
     offset: ["start start", "end start"],
   });
   const spring = { stiffness: 100, damping: 22, mass: 0.6 };
-  const scrollLift = useSpring(useTransform(scrollYProgress, [0, 0.5], [20, 0]), spring);
+  const scrollLift = useSpring(useTransform(scrollYProgress, [0, 1], [40, -90]), spring);
+  const scrollScale = useSpring(useTransform(scrollYProgress, [0, 1], [1, 0.94]), spring);
   const orbY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   // Mouse-driven 3D parallax tilt
