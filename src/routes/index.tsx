@@ -2,7 +2,20 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Toaster } from "sonner";
-import { UtensilsCrossed, Stethoscope, Scissors, ArrowRight, Instagram, Facebook, Sparkles, Target, Users, Zap, Check, Gift } from "lucide-react";
+import {
+  UtensilsCrossed,
+  Stethoscope,
+  Scissors,
+  ArrowRight,
+  Instagram,
+  Facebook,
+  Sparkles,
+  Target,
+  Users,
+  Zap,
+  Check,
+  Gift,
+} from "lucide-react";
 
 import { Navbar } from "@/components/Navbar";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
@@ -102,7 +115,10 @@ function Hero() {
   };
 
   return (
-    <section ref={heroRef} className="spotlight-host bg-hero relative overflow-hidden pt-28 text-white md:pt-36">
+    <section
+      ref={heroRef}
+      className="spotlight-host bg-hero relative overflow-hidden pt-28 text-white md:pt-36"
+    >
       <span className="spotlight" aria-hidden />
       <motion.div className="pointer-events-none absolute inset-0" style={{ y: orbY }} aria-hidden>
         <div className="glow-orb glow-orb-navy left-1/2 top-[-200px] h-[600px] w-[1100px] -translate-x-1/2" />
@@ -117,7 +133,8 @@ function Hero() {
           transition={{ duration: 0.7 }}
           className="eyebrow mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur"
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-signal" /> Hisar · Digital Media · Business Audits
+          <span className="h-1.5 w-1.5 rounded-full bg-signal" /> Hisar · Digital Media · Business
+          Audits
         </motion.div>
 
         <motion.h1
@@ -222,8 +239,12 @@ function Hero() {
                 <span className="relative h-2.5 w-2.5 rounded-full bg-signal" />
               </span>
               <div className="text-left">
-                <div className="font-display text-[13px] font-semibold text-white">+18 leads today</div>
-                <div className="text-[10px] uppercase tracking-[0.18em] text-skyblue/70">Live · Hisar</div>
+                <div className="font-display text-[13px] font-semibold text-white">
+                  +18 leads today
+                </div>
+                <div className="text-[10px] uppercase tracking-[0.18em] text-skyblue/70">
+                  Live · Hisar
+                </div>
               </div>
             </motion.div>
 
@@ -239,7 +260,9 @@ function Hero() {
               <div className="font-display flex items-center gap-1.5 text-[15px] font-semibold text-white">
                 4.9 <span className="text-signal">★★★★★</span>
               </div>
-              <div className="text-[10px] uppercase tracking-[0.18em] text-skyblue/70">Avg client rating</div>
+              <div className="text-[10px] uppercase tracking-[0.18em] text-skyblue/70">
+                Avg client rating
+              </div>
             </motion.div>
 
             {/* Floating badge: 7-day delivery */}
@@ -319,8 +342,8 @@ function MetricsBar() {
             Measured in growth.
           </h2>
           <p className="apple-sub max-w-[560px]">
-            Real outcomes from real local businesses — fast delivery, steady
-            growth, and support that actually shows up.
+            Real outcomes from real local businesses — fast delivery, steady growth, and support
+            that actually shows up.
           </p>
 
           <div className="mt-10 grid w-full max-w-[1100px] grid-cols-2 gap-3 md:mt-14 md:grid-cols-4 md:gap-5">
@@ -369,8 +392,8 @@ function Services() {
             Digital Banaiye.
           </h2>
           <p className="apple-sub max-w-[560px]">
-            Restaurant, clinic ya salon — har business ke liye custom packages.
-            Premium sites, Google ranking, Instagram growth. Transparent pricing.
+            Restaurant, clinic ya salon — har business ke liye custom packages. Premium sites,
+            Google ranking, Instagram growth. Transparent pricing.
           </p>
           <div className="apple-cta-row">
             <a href="#industries" className="apple-pill apple-pill-primary">
@@ -420,12 +443,10 @@ function Industries() {
         >
           <article className="apple-tile h-full">
             <div className="apple-eyebrow">Every Other Business</div>
-            <h3 className="apple-headline max-w-[420px]">
-              Built for you. Whatever you do.
-            </h3>
+            <h3 className="apple-headline max-w-[420px]">Built for you. Whatever you do.</h3>
             <p className="apple-sub max-w-[460px]">
-              Retail, services, contractors — agar aap local hain aur grow karna
-              chahte ho, hum aapke liye banayenge.
+              Retail, services, contractors — agar aap local hain aur grow karna chahte ho, hum
+              aapke liye banayenge.
             </p>
             <div className="apple-cta-row">
               <a href="#contact" className="apple-pill apple-pill-primary">
@@ -483,8 +504,8 @@ function FreeTrial() {
             <span style={{ color: "oklch(0.78 0.18 25)" }}>Zero risk. All proof.</span>
           </h2>
           <p className="apple-sub max-w-[560px]">
-            Pehle dekho, phir decide karo. Hum aapke business ke liye complete
-            starter pack 7 din mein build karke denge — bilkul free.
+            Pehle dekho, phir decide karo. Hum aapke business ke liye complete starter pack 7 din
+            mein build karke denge — bilkul free.
           </p>
           <div className="apple-cta-row">
             <a href="#contact" className="apple-pill apple-pill-primary">
@@ -498,10 +519,7 @@ function FreeTrial() {
           <div className="mt-10 grid w-full max-w-[980px] gap-4 px-2 text-left md:mt-14 md:grid-cols-12 md:gap-6">
             <ul className="grid gap-2.5 md:col-span-7 md:grid-cols-2">
               {perks.map((perk) => (
-                <li
-                  key={perk}
-                  className="flex items-start gap-2.5 text-[13px] text-skyblue/85"
-                >
+                <li key={perk} className="flex items-start gap-2.5 text-[13px] text-skyblue/85">
                   <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-signal/15 ring-1 ring-signal/30">
                     <Check className="h-3 w-3 text-signal" strokeWidth={3} />
                   </span>
@@ -516,9 +534,7 @@ function FreeTrial() {
                   <span className="font-mono-brand text-[10px] uppercase tracking-[0.22em] text-skyblue/70">
                     Starter Pack Value
                   </span>
-                  <span className="text-[11px] text-skyblue/50 line-through">
-                    ₹24,999
-                  </span>
+                  <span className="text-[11px] text-skyblue/50 line-through">₹24,999</span>
                 </div>
                 <div className="mt-2 font-display text-4xl font-bold tracking-tight text-white">
                   ₹0
@@ -671,9 +687,8 @@ function About() {
             A Hisar studio building India's local heroes.
           </h2>
           <p className="apple-sub max-w-[440px]">
-            Every kirana, clinic and café in Haryana deserves the same craft as
-            a Bengaluru startup. We design, code and launch — fast, transparent,
-            built to convert.
+            Every kirana, clinic and café in Haryana deserves the same craft as a Bengaluru startup.
+            We design, code and launch — fast, transparent, built to convert.
           </p>
           <div className="apple-cta-row">
             <a href="#contact" className="apple-pill apple-pill-primary">
@@ -719,9 +734,7 @@ function About() {
                   <h3 className="font-display mt-3 text-base font-semibold tracking-tight text-white">
                     {val.title}
                   </h3>
-                  <p className="mt-1 text-[12px] leading-relaxed text-skyblue/75">
-                    {val.body}
-                  </p>
+                  <p className="mt-1 text-[12px] leading-relaxed text-skyblue/75">{val.body}</p>
                 </div>
               ))}
             </div>
@@ -760,8 +773,7 @@ function Testimonials() {
             Real growth.
           </h2>
           <p className="apple-sub max-w-[560px]">
-            Haryana ke local businesses jo CoreSoft ke saath scale kar rahe hain
-            — unke words mein.
+            Haryana ke local businesses jo CoreSoft ke saath scale kar rahe hain — unke words mein.
           </p>
           <div className="apple-cta-row">
             <a href="#contact" className="apple-pill apple-pill-primary">
@@ -795,17 +807,19 @@ function ContactSection() {
             <span className="h-1.5 w-1.5 rounded-full bg-signal" /> Let's Talk
           </div>
           <h2 className="text-balance text-4xl font-bold leading-[1.05] tracking-[-0.035em] text-white md:text-6xl">
-            Your audit is{" "}
-            <span className="text-signal">free</span>.
+            Your audit is <span className="text-signal">free</span>.
             <br />
             Your growth isn't.
           </h2>
           <p className="mt-6 max-w-md text-pretty text-lg text-skyblue/80">
-            Send us a message — we'll review your business online and respond on
-            WhatsApp within 30 minutes.
+            Send us a message — we'll review your business online and respond on WhatsApp within 30
+            minutes.
           </p>
           <div className="mt-10 space-y-4 text-skyblue/90">
-            <a href="https://wa.me/918168194134" className="block text-lg font-medium text-white transition hover:text-signal">
+            <a
+              href="https://wa.me/918168194134"
+              className="block text-lg font-medium text-white transition hover:text-signal"
+            >
               +91 81681 94134
             </a>
             <p className="text-[13px] uppercase tracking-[0.18em] text-skyblue/60">
@@ -833,17 +847,31 @@ function Footer() {
           <div className="md:col-span-6">
             <CoreSoftLogo variant="dark" className="h-10 w-auto" />
             <p className="mt-6 max-w-sm text-[14px] leading-relaxed">
-              Premium digital media and business audits for India's local heroes.
-              Built in Hisar, Haryana.
+              Premium digital media and business audits for India's local heroes. Built in Hisar,
+              Haryana.
             </p>
           </div>
           <div className="md:col-span-3">
-            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-skyblue/50">Contact</p>
-            <a href="https://wa.me/918168194134" className="block text-white/90 transition hover:text-signal">+91 81681 94134</a>
-            <a href="mailto:rkentra9005@gmail.com" className="mt-2 block transition hover:text-white">rkentra9005@gmail.com</a>
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-skyblue/50">
+              Contact
+            </p>
+            <a
+              href="https://wa.me/918168194134"
+              className="block text-white/90 transition hover:text-signal"
+            >
+              +91 81681 94134
+            </a>
+            <a
+              href="mailto:rkentra9005@gmail.com"
+              className="mt-2 block transition hover:text-white"
+            >
+              rkentra9005@gmail.com
+            </a>
           </div>
           <div className="md:col-span-3">
-            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-skyblue/50">Follow</p>
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-skyblue/50">
+              Follow
+            </p>
             <div className="flex gap-3">
               <SocialIcon href="https://facebook.com/coresoft.solutions" label="Facebook">
                 <Facebook className="h-4 w-4" />
@@ -864,7 +892,15 @@ function Footer() {
   );
 }
 
-function SocialIcon({ href, label, children }: { href: string; label: string; children: React.ReactNode }) {
+function SocialIcon({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
     <a
       href={href}

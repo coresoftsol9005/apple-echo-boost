@@ -1,4 +1,5 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../styles.css?url";
 
@@ -37,11 +38,31 @@ export const Route = createRootRoute({
       },
       { property: "og:title", content: "CoreSoft Solutions — Innovation for every business." },
       { name: "twitter:title", content: "CoreSoft Solutions — Innovation for every business." },
-      { name: "description", content: "CoreSoft Digital Ascent is a high-converting landing page for digital business solutions." },
-      { property: "og:description", content: "CoreSoft Digital Ascent is a high-converting landing page for digital business solutions." },
-      { name: "twitter:description", content: "CoreSoft Digital Ascent is a high-converting landing page for digital business solutions." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/30252efd-3f79-4ec0-9128-c8ba48a3b5e7" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/30252efd-3f79-4ec0-9128-c8ba48a3b5e7" },
+      {
+        name: "description",
+        content:
+          "CoreSoft Digital Ascent is a high-converting landing page for digital business solutions.",
+      },
+      {
+        property: "og:description",
+        content:
+          "CoreSoft Digital Ascent is a high-converting landing page for digital business solutions.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "CoreSoft Digital Ascent is a high-converting landing page for digital business solutions.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/30252efd-3f79-4ec0-9128-c8ba48a3b5e7",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/30252efd-3f79-4ec0-9128-c8ba48a3b5e7",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:type", content: "website" },
     ],
@@ -69,6 +90,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <Scripts />
+        <SpeedInsights />
       </body>
     </html>
   );

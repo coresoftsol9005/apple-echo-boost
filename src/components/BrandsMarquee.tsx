@@ -1,4 +1,13 @@
-import { UtensilsCrossed, Stethoscope, Scissors, Sparkles, Wrench, ShoppingBag, GraduationCap, Building2 } from "lucide-react";
+import {
+  UtensilsCrossed,
+  Stethoscope,
+  Scissors,
+  Sparkles,
+  Wrench,
+  ShoppingBag,
+  GraduationCap,
+  Building2,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type Brand = {

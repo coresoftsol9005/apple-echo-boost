@@ -44,16 +44,45 @@ const initialData: FormData = {
 };
 
 const categories = [
-  { id: "restaurant", icon: "🍽️", label: "Restaurant / Café / Dhaba", sub: "Food, delivery, menu, orders" },
-  { id: "salon", icon: "💅", label: "Salon / Spa / Beauty Parlour", sub: "Bookings, gallery, offers" },
-  { id: "clinic", icon: "🏥", label: "Doctor / Clinic / Dentist", sub: "Appointments, trust, reviews" },
-  { id: "service", icon: "🔧", label: "Service Business", sub: "Plumber, electrician, contractor etc." },
-  { id: "retail", icon: "🛍️", label: "Retail / Shop / Boutique", sub: "Product listings, local discovery" },
+  {
+    id: "restaurant",
+    icon: "🍽️",
+    label: "Restaurant / Café / Dhaba",
+    sub: "Food, delivery, menu, orders",
+  },
+  {
+    id: "salon",
+    icon: "💅",
+    label: "Salon / Spa / Beauty Parlour",
+    sub: "Bookings, gallery, offers",
+  },
+  {
+    id: "clinic",
+    icon: "🏥",
+    label: "Doctor / Clinic / Dentist",
+    sub: "Appointments, trust, reviews",
+  },
+  {
+    id: "service",
+    icon: "🔧",
+    label: "Service Business",
+    sub: "Plumber, electrician, contractor etc.",
+  },
+  {
+    id: "retail",
+    icon: "🛍️",
+    label: "Retail / Shop / Boutique",
+    sub: "Product listings, local discovery",
+  },
   { id: "other", icon: "🏢", label: "Other Business", sub: "We cover all local businesses" },
 ];
 
 const services = [
-  { id: "website", label: "Website Design & Development", sub: "Professional site, mobile-friendly, fast" },
+  {
+    id: "website",
+    label: "Website Design & Development",
+    sub: "Professional site, mobile-friendly, fast",
+  },
   { id: "seo", label: "Google SEO & Local Visibility", sub: "Rank higher on Google Maps & Search" },
   { id: "social", label: "Social Media Management", sub: "Instagram, Facebook — regular content" },
   { id: "gmb", label: "Google My Business Setup", sub: "Profile, reviews, photos, posts" },
@@ -184,9 +213,7 @@ Notes: ${data.extra}`;
 
       <div className="px-6 py-8 md:px-10 md:py-9">
         {step === 0 && <WelcomeStep onStart={next} />}
-        {step === 1 && (
-          <NameStep data={data} update={update} onNext={validateAndNext} />
-        )}
+        {step === 1 && <NameStep data={data} update={update} onNext={validateAndNext} />}
         {step === 2 && (
           <ContactStep data={data} update={update} onNext={validateAndNext} onBack={prev} />
         )}
@@ -205,9 +232,7 @@ Notes: ${data.extra}`;
         {step === 7 && (
           <BudgetStep data={data} update={update} onNext={validateAndNext} onBack={prev} />
         )}
-        {step === 8 && (
-          <ExtraStep data={data} update={update} onSubmit={submit} onBack={prev} />
-        )}
+        {step === 8 && <ExtraStep data={data} update={update} onSubmit={submit} onBack={prev} />}
         {step === 9 && <SuccessStep data={data} onWhatsApp={openWhatsApp} />}
       </div>
 
@@ -368,7 +393,15 @@ function WelcomeStep({ onStart }: { onStart: () => void }) {
   return (
     <div className="text-center">
       <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-signal bg-signal/10">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#E53935" strokeWidth={2} strokeLinecap="round">
+        <svg
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="#E53935"
+          strokeWidth={2}
+          strokeLinecap="round"
+        >
           <path d="M12 2L2 7l10 5 10-5-10-5z" />
           <path d="M2 17l10 5 10-5" />
           <path d="M2 12l10 5 10-5" />
@@ -395,7 +428,7 @@ function WelcomeStep({ onStart }: { onStart: () => void }) {
       </div>
       <div className="mt-8 flex justify-center">
         <button type="button" className="cs-btn-next" onClick={onStart}>
-          Let's Get Started  →
+          Let's Get Started →
         </button>
       </div>
     </div>
@@ -532,7 +565,8 @@ function BusinessStep({ data, update, onNext, onBack }: StepProps) {
         Aapke business ka naam kya hai?<span className="accent">*</span>
       </div>
       <p className="cs-hint">
-        Tell us your brand name and social handles — so we can do a quick online audit before we speak.
+        Tell us your brand name and social handles — so we can do a quick online audit before we
+        speak.
       </p>
 
       <div className="mb-3">
@@ -592,7 +626,9 @@ function CategoryStep({ data, update, onNext, onBack }: StepProps) {
       <div className="cs-question">
         Aapka business kis type ka hai?<span className="accent">*</span>
       </div>
-      <p className="cs-hint">We specialise in specific verticals — select the one that fits best.</p>
+      <p className="cs-hint">
+        We specialise in specific verticals — select the one that fits best.
+      </p>
 
       <div className="flex flex-col gap-2.5">
         {categories.map((c) => (
@@ -628,7 +664,10 @@ function CategoryStep({ data, update, onNext, onBack }: StepProps) {
 function ServicesStep({ data, update, onNext, onBack }: StepProps) {
   const toggle = (id: string) => {
     if (data.services.includes(id)) {
-      update("services", data.services.filter((s) => s !== id));
+      update(
+        "services",
+        data.services.filter((s) => s !== id),
+      );
     } else {
       update("services", [...data.services, id]);
     }
@@ -655,7 +694,15 @@ function ServicesStep({ data, update, onNext, onBack }: StepProps) {
             >
               <div className="cs-option-mark">
                 {selected && (
-                  <svg viewBox="0 0 10 8" width="10" height="8" fill="none" stroke="white" strokeWidth={2} strokeLinecap="round">
+                  <svg
+                    viewBox="0 0 10 8"
+                    width="10"
+                    height="8"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                  >
                     <polyline points="1,4 4,7 9,1" />
                   </svg>
                 )}
@@ -684,7 +731,8 @@ function GoalsStep({ data, update, onNext, onBack }: StepProps) {
         Aapke business ke baare mein batayein<span className="accent">*</span>
       </div>
       <p className="cs-hint">
-        Kya karte hain, kaun hai aapka customer, aur kya khaas hai aapke brand mein — 2-3 sentences mein likhein.
+        Kya karte hain, kaun hai aapka customer, aur kya khaas hai aapke brand mein — 2-3 sentences
+        mein likhein.
       </p>
 
       <div className="mb-3">
@@ -723,7 +771,9 @@ function BudgetStep({ data, update, onNext, onBack }: StepProps) {
       <div className="cs-question">
         Aapka monthly budget kitna hai?<span className="accent">*</span>
       </div>
-      <p className="cs-hint">No judgment — this helps us suggest the right plan. All options get quality results.</p>
+      <p className="cs-hint">
+        No judgment — this helps us suggest the right plan. All options get quality results.
+      </p>
 
       <div className="flex flex-col gap-2.5">
         {budgets.map((b) => (
@@ -792,13 +842,27 @@ function ExtraStep({
           value={data.source}
           onChange={(e) => update("source", e.target.value)}
         >
-          <option value="" className="bg-midnight">— Select —</option>
-          <option value="whatsapp" className="bg-midnight">WhatsApp Message</option>
-          <option value="friend" className="bg-midnight">Friend / Family Referral</option>
-          <option value="google" className="bg-midnight">Google Search</option>
-          <option value="instagram" className="bg-midnight">Instagram / Facebook</option>
-          <option value="justdial" className="bg-midnight">JustDial / IndiaMART</option>
-          <option value="other" className="bg-midnight">Other</option>
+          <option value="" className="bg-midnight">
+            — Select —
+          </option>
+          <option value="whatsapp" className="bg-midnight">
+            WhatsApp Message
+          </option>
+          <option value="friend" className="bg-midnight">
+            Friend / Family Referral
+          </option>
+          <option value="google" className="bg-midnight">
+            Google Search
+          </option>
+          <option value="instagram" className="bg-midnight">
+            Instagram / Facebook
+          </option>
+          <option value="justdial" className="bg-midnight">
+            JustDial / IndiaMART
+          </option>
+          <option value="other" className="bg-midnight">
+            Other
+          </option>
         </select>
       </div>
 
@@ -811,7 +875,15 @@ function SuccessStep({ data, onWhatsApp }: { data: FormData; onWhatsApp: () => v
   return (
     <div className="py-6 text-center">
       <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-signal bg-signal/10">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#E53935" strokeWidth={2.5} strokeLinecap="round">
+        <svg
+          viewBox="0 0 24 24"
+          width="28"
+          height="28"
+          fill="none"
+          stroke="#E53935"
+          strokeWidth={2.5}
+          strokeLinecap="round"
+        >
           <polyline points="20,6 9,17 4,12" />
         </svg>
       </div>
