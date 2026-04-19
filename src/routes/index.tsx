@@ -186,6 +186,7 @@ function Hero() {
               rotateX: rotX,
               rotateY: rotY,
               y: scrollLift,
+              scale: scrollScale,
               transformStyle: "preserve-3d",
               transformOrigin: "50% 80%",
             }}
