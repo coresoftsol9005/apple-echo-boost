@@ -212,7 +212,7 @@ Notes: ${data.extra}`;
       </div>
 
       <div className="flex items-center justify-between bg-[#070E1C] px-6 py-3 md:px-10">
-        <p className="text-[11px] tracking-wider text-textmute">
+        <p className="text-[11px] tracking-wider text-[#546E8A]">
           CoreSoft Solutions · Hisar, Haryana · +91 81681 94134
         </p>
         <div className="h-[2px] w-8 rounded-sm bg-signal" />
@@ -382,7 +382,7 @@ function WelcomeStep({ onStart }: { onStart: () => void }) {
         <br />
         <span className="accent">Hamaari Digital Expertise.</span>
       </div>
-      <p className="mx-auto mt-3 max-w-[400px] text-sm leading-7 text-textmute">
+      <p className="mx-auto mt-3 max-w-[400px] text-sm leading-7 text-[#546E8A]">
         Tell us about your business in a few quick steps. We'll review your details and get back to
         you within 30 minutes on WhatsApp.
       </p>
@@ -406,7 +406,7 @@ function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="text-center">
       <div className="text-lg font-black text-signal">{value}</div>
-      <div className="text-[10px] uppercase tracking-[0.15em] text-textmute">{label}</div>
+      <div className="text-[10px] uppercase tracking-[0.15em] text-[#546E8A]">{label}</div>
     </div>
   );
 }
@@ -818,7 +818,7 @@ function SuccessStep({ data, onWhatsApp }: { data: FormData; onWhatsApp: () => v
       <div className="text-[26px] font-black tracking-tight text-white">
         Shukriya, {data.fname || "Friend"}! 🙏
       </div>
-      <p className="mx-auto mt-3 max-w-[400px] text-sm leading-7 text-textmute">
+      <p className="mx-auto mt-3 max-w-[400px] text-sm leading-7 text-[#546E8A]">
         Aapki details mil gayi hain. Hum 30 minutes mein aapke WhatsApp par reply karenge aur aapka
         free digital audit share karenge.
       </p>
@@ -853,7 +853,7 @@ function SummaryRow({ k, v, last }: { k: string; v: string; last?: boolean }) {
         last ? "" : "border-b border-skyblue/[0.07]"
       }`}
     >
-      <span className="min-w-[100px] flex-shrink-0 text-[11px] font-bold uppercase tracking-wider text-textmute">
+      <span className="min-w-[100px] flex-shrink-0 text-[11px] font-bold uppercase tracking-wider text-[#546E8A]">
         {k}
       </span>
       <span className="text-right text-[13px] leading-6 text-skyblue">{v || "—"}</span>
