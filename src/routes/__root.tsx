@@ -35,6 +35,15 @@ export const Route = createRootRoute({
         content:
           "Premium websites, Google ranking and digital audits for restaurants, clinics and salons. 7-day delivery. Hisar, Haryana.",
       },
+      { property: "og:title", content: "CoreSoft Solutions — Innovation for every business." },
+      { name: "twitter:title", content: "CoreSoft Solutions — Innovation for every business." },
+      { name: "description", content: "CoreSoft Digital Ascent is a high-converting landing page for digital business solutions." },
+      { property: "og:description", content: "CoreSoft Digital Ascent is a high-converting landing page for digital business solutions." },
+      { name: "twitter:description", content: "CoreSoft Digital Ascent is a high-converting landing page for digital business solutions." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4cf1a154-b658-4324-a87f-a409b4042c64/id-preview-7b71354f--a836bd86-6fad-4683-ba8f-8122e18a956b.lovable.app-1776606927398.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4cf1a154-b658-4324-a87f-a409b4042c64/id-preview-7b71354f--a836bd86-6fad-4683-ba8f-8122e18a956b.lovable.app-1776606927398.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:type", content: "website" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
