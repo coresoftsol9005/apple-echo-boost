@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import type { LucideIcon } from "lucide-react";
 
 type Props = {
@@ -11,8 +12,17 @@ type Props = {
 };
 
 export function IndustryCard({ icon: Icon, title, power, image, tone = "light" }: Props) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  // Drift the image up ~60px as the tile scrolls through the viewport
+  const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
+
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -33,12 +43,13 @@ export function IndustryCard({ icon: Icon, title, power, image, tone = "light" }
             Get a quote
           </a>
         </div>
-        <div className="apple-tile-media">
-          <img
+        <div className="apple-tile-media overflow-hidden">
+          <motion.img
             src={image}
             alt={`${title} interface preview`}
             loading="lazy"
-            className="max-w-[420px] select-none drop-shadow-2xl"
+            style={{ y }}
+            className="max-w-[420px] select-none drop-shadow-2xl will-change-transform"
           />
         </div>
       </article>
