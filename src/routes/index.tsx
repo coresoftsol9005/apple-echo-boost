@@ -260,12 +260,45 @@ function Hero() {
 }
 
 /* ───────────────── METRICS ───────────────── */
+function CountUp({ to, duration = 1.6 }: { to: number; duration?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [display, setDisplay] = useState(0);
+  const startedRef = useRef(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && !startedRef.current) {
+            startedRef.current = true;
+            const start = performance.now();
+            const tick = (now: number) => {
+              const t = Math.min(1, (now - start) / (duration * 1000));
+              const eased = 1 - Math.pow(1 - t, 3);
+              setDisplay(Math.round(to * eased));
+              if (t < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+    obs.observe(node);
+    return () => obs.disconnect();
+  }, [to, duration]);
+
+  return <span ref={ref}>{display}</span>;
+}
+
 function MetricsBar() {
-  const stats = [
-    { k: "7 Days", v: "Average delivery" },
-    { k: "3×", v: "Revenue growth" },
-    { k: "50+", v: "Local businesses" },
-    { k: "30 min", v: "Response on WhatsApp" },
+  const stats: { num: number; prefix?: string; suffix: string; v: string }[] = [
+    { num: 7, suffix: " Days", v: "Average delivery" },
+    { num: 3, suffix: "×", v: "Revenue growth" },
+    { num: 50, suffix: "+", v: "Local businesses" },
+    { num: 30, suffix: " min", v: "Response on WhatsApp" },
   ];
   return (
     <section className="bg-apple-canvas py-4 md:py-6">
@@ -291,7 +324,7 @@ function MetricsBar() {
           <div className="mt-10 grid w-full max-w-[1100px] grid-cols-2 gap-3 md:mt-14 md:grid-cols-4 md:gap-5">
             {stats.map((s, i) => (
               <motion.div
-                key={s.k}
+                key={s.v}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -299,7 +332,10 @@ function MetricsBar() {
               >
                 <Tilt3D max={2} lift={1.5} glare={false} className="h-full">
                   <div className="metric-chip">
-                    <div className="metric-chip-k">{s.k}</div>
+                    <div className="metric-chip-k">
+                      <CountUp to={s.num} />
+                      {s.suffix}
+                    </div>
                     <div className="metric-chip-v">{s.v}</div>
                   </div>
                 </Tilt3D>
