@@ -14,14 +14,19 @@ type Props = {
  */
 export function Magnetic({ children, className = "", strength = 7 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const spring = { stiffness: 220, damping: 18, mass: 0.5 };
   const sx = useSpring(x, spring);
   const sy = useSpring(y, spring);
 
+  const cacheRect = () => {
+    rectRef.current = ref.current?.getBoundingClientRect() ?? null;
+  };
+
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const r = ref.current?.getBoundingClientRect();
+    const r = rectRef.current;
     if (!r) return;
     const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
     const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
@@ -37,6 +42,7 @@ export function Magnetic({ children, className = "", strength = 7 }: Props) {
   return (
     <motion.div
       ref={ref}
+      onMouseEnter={cacheRect}
       onMouseMove={handleMove}
       onMouseLeave={reset}
       style={{ x: sx, y: sy }}
