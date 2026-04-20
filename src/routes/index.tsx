@@ -14,10 +14,10 @@ import { Magnetic } from "@/components/Magnetic";
 import { TestimonialsGrid } from "@/components/TestimonialsGrid";
 import { BrandsMarquee } from "@/components/BrandsMarquee";
 
-import heroLaptop from "@/assets/hero-laptop.jpg";
-import deviceRestaurant from "@/assets/device-restaurant.jpg";
-import deviceDoctor from "@/assets/device-doctor.jpg";
-import deviceSalon from "@/assets/device-salon.jpg";
+import heroLaptop from "@/assets/hero-laptop.webp";
+import deviceRestaurant from "@/assets/device-restaurant.webp";
+import deviceDoctor from "@/assets/device-doctor.webp";
+import deviceSalon from "@/assets/device-salon.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
