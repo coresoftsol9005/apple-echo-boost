@@ -213,6 +213,8 @@ function Hero() {
               alt="CoreSoft analytics dashboard with restaurant booking app, WhatsApp leads and 4.9 star reviews"
               width={1920}
               height={1080}
+              fetchPriority="high"
+              decoding="async"
               className="relative mx-auto w-full rounded-[32px] shadow-[0_80px_160px_-40px_rgba(0,0,0,0.85)] ring-1 ring-white/10"
             />
 
