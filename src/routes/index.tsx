@@ -183,6 +183,7 @@ function Hero() {
         >
           <motion.div
             ref={showcaseRef}
+            onMouseEnter={cacheShowcaseRect}
             onMouseMove={handleMove}
             onMouseLeave={handleLeave}
             style={{
