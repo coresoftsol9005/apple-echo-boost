@@ -50,14 +50,14 @@ export const Route = createRootRoute({
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       // Load Google Fonts non-blocking to improve FCP/LCP.
-      // Browsers honor `media="print"` by not blocking render; the onload swap
-      // applies the stylesheet after first paint.
+      // `media="print"` makes the browser fetch without blocking render;
+      // the onload handler swaps it back to `all` so the fonts apply.
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Syne:wght@500;600;700;800&display=swap",
         media: "print",
         onLoad: "this.media='all'",
-      },
+      } as unknown as { rel: string; href: string },
     ],
   }),
   shellComponent: RootShell,
