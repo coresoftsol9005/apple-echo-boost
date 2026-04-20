@@ -49,6 +49,13 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
+      // Preload the Google Fonts CSS so it starts downloading earlier
+      // (shortens the critical request chain), then apply it non-blocking.
+      {
+        rel: "preload",
+        as: "style",
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Syne:wght@500;600;700;800&display=swap",
+      } as unknown as { rel: string; href: string },
       // Load Google Fonts non-blocking to improve FCP/LCP.
       // `media="print"` makes the browser fetch without blocking render;
       // the onload handler swaps it back to `all` so the fonts apply.
