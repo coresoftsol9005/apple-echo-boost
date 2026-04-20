@@ -65,6 +65,7 @@ function Index() {
 function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const showcaseRef = useRef<HTMLDivElement>(null);
+  const showcaseRectRef = useRef<DOMRect | null>(null);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -89,10 +90,12 @@ function Hero() {
   const shipX = useTransform(floatX, (v) => v * 0.5);
   const shipY = useTransform(floatY, (v) => -v * 0.4);
 
+  const cacheShowcaseRect = () => {
+    showcaseRectRef.current = showcaseRef.current?.getBoundingClientRect() ?? null;
+  };
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = showcaseRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
+    const rect = showcaseRectRef.current;
+    if (!rect) return;
     mx.set((e.clientX - rect.left) / rect.width - 0.5);
     my.set((e.clientY - rect.top) / rect.height - 0.5);
   };
