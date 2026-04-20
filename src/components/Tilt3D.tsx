@@ -30,6 +30,7 @@ export function Tilt3D({
   depth = 0,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);
 
@@ -47,8 +48,12 @@ export function Tilt3D({
   const glareOpacity = useSpring(0, spring);
   const glareBg = useMotionTemplate`radial-gradient(circle at ${glareXPct} ${glareYPct}, rgba(255,255,255,0.7), rgba(255,255,255,0) 45%)`;
 
+  const cacheRect = () => {
+    rectRef.current = ref.current?.getBoundingClientRect() ?? null;
+  };
+
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const r = ref.current?.getBoundingClientRect();
+    const r = rectRef.current;
     if (!r) return;
     px.set((e.clientX - r.left) / r.width);
     py.set((e.clientY - r.top) / r.height);
@@ -66,6 +71,7 @@ export function Tilt3D({
   return (
     <motion.div
       ref={ref}
+      onMouseEnter={cacheRect}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       style={{ perspective, transformStyle: "preserve-3d" }}
