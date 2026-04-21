@@ -821,9 +821,7 @@ function ContactSection() {
         </div>
 
         <div className="flex md:col-span-7">
-          <Tilt3D max={1.5} lift={1} glare={false} className="w-full">
-            <LeadForm />
-          </Tilt3D>
+          <LeadForm />
         </div>
       </div>
     </section>
