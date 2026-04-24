@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "deploy": "vite build && node -e \"const f=require('fs');const c=JSON.parse(f.readFileSync('dist/client/wrangler.json'));c.main='./dist/server/server.js';f.writeFileSync('dist/client/wrangler.json',JSON.stringify(c));\" && npx wrangler deploy --config dist/client/wrangler.json"
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
