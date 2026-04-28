@@ -148,7 +148,7 @@
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
     font-weight: 700;
   }
 
@@ -161,7 +161,8 @@
 @layer utilities {
   .font-display {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
+    font-weight: 700;
   }
   .font-mono-brand {
     font-family: var(--font-mono);
@@ -458,7 +459,7 @@
   to { transform: translateX(-50%); }
 }
 
-/* ───────────────── Apple-style light tile system ───────────────── */
+/* ───────────────── Zomato-style tile system ───────────────── */
 .apple-tile {
   position: relative;
   display: flex;
@@ -466,16 +467,18 @@
   align-items: center;
   text-align: center;
   overflow: hidden;
-  border-radius: 28px;
+  border-radius: 32px;
   background: #ffffff;
-  color: oklch(0.18 0.04 260);
+  color: oklch(0.18 0.012 30);
   padding: 56px 28px 56px;
   isolation: isolate;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 8px 30px -12px rgba(15,23,42,0.08);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 12px 40px -16px rgba(20,15,15,0.10);
 }
 .apple-tile.is-dark {
-  background: linear-gradient(180deg, oklch(0.16 0.05 260) 0%, oklch(0.20 0.05 260) 100%);
-  color: oklch(0.98 0.005 240);
+  background:
+    radial-gradient(ellipse at 20% 0%, oklch(0.66 0.21 18 / 0.18) 0%, transparent 55%),
+    linear-gradient(180deg, oklch(0.18 0.014 30) 0%, oklch(0.12 0.010 30) 100%);
+  color: oklch(0.985 0.005 60);
 }
 @media (min-width: 768px) {
   .apple-tile { padding: 80px 40px 80px; }
@@ -484,65 +487,69 @@
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 13px;
-  letter-spacing: -0.01em;
-  color: oklch(0.62 0.22 27);
-  margin-bottom: 8px;
+  letter-spacing: -0.005em;
+  color: oklch(0.66 0.21 18);
+  margin-bottom: 10px;
 }
-.apple-tile.is-dark .apple-eyebrow { color: oklch(0.78 0.18 25); }
+.apple-tile.is-dark .apple-eyebrow { color: oklch(0.78 0.18 22); }
 .apple-headline {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(28px, 4.2vw, 56px);
-  line-height: 1.05;
-  letter-spacing: -0.035em;
+  font-weight: 800;
+  font-size: clamp(30px, 4.6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
   text-wrap: balance;
   color: inherit;
 }
 .apple-sub {
   margin-top: 14px;
   font-size: clamp(15px, 1.5vw, 19px);
-  line-height: 1.45;
+  line-height: 1.5;
   font-weight: 400;
-  color: oklch(0.42 0.02 260);
+  color: oklch(0.42 0.012 30);
   text-wrap: pretty;
 }
-.apple-tile.is-dark .apple-sub { color: oklch(0.85 0.04 240 / 0.85); }
+.apple-tile.is-dark .apple-sub { color: oklch(0.88 0.012 40 / 0.85); }
 
 .apple-cta-row {
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
-  margin-top: 22px;
+  margin-top: 24px;
 }
 .apple-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 22px;
+  padding: 12px 26px;
   border-radius: 999px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1;
-  transition: transform 250ms cubic-bezier(0.22,1,0.36,1), background 250ms, color 250ms, border-color 250ms;
+  transition: transform 250ms cubic-bezier(0.22,1,0.36,1), background 250ms, color 250ms, border-color 250ms, box-shadow 250ms;
 }
 .apple-pill:hover { transform: translateY(-1px); }
 .apple-pill-primary {
-  background: oklch(0.62 0.22 27);
+  background: oklch(0.66 0.21 18);
   color: white;
+  box-shadow: 0 12px 30px -12px oklch(0.66 0.21 18 / 0.55);
 }
-.apple-pill-primary:hover { background: oklch(0.58 0.23 27); }
+.apple-pill-primary:hover {
+  background: oklch(0.60 0.22 19);
+  box-shadow: 0 18px 40px -14px oklch(0.66 0.21 18 / 0.7);
+}
 .apple-pill-secondary {
   background: transparent;
-  color: oklch(0.62 0.22 27);
-  border: 1.5px solid oklch(0.62 0.22 27);
+  color: oklch(0.66 0.21 18);
+  border: 1.5px solid oklch(0.66 0.21 18);
 }
-.apple-pill-secondary:hover { background: oklch(0.62 0.22 27 / 0.08); }
+.apple-pill-secondary:hover { background: oklch(0.66 0.21 18 / 0.08); }
 .apple-tile.is-dark .apple-pill-secondary {
-  color: oklch(0.78 0.18 25);
-  border-color: oklch(0.78 0.18 25);
+  color: oklch(0.94 0.04 25);
+  border-color: oklch(0.94 0.04 25 / 0.6);
 }
-.apple-tile.is-dark .apple-pill-secondary:hover { background: oklch(0.78 0.18 25 / 0.12); }
+.apple-tile.is-dark .apple-pill-secondary:hover { background: oklch(1 0 0 / 0.06); }
 
 .apple-tile-media {
   margin-top: 36px;
@@ -559,10 +566,11 @@
 }
 
 .bg-apple-canvas {
-  background: oklch(0.94 0.005 240);
+  /* Warm off-white between sections, like Zomato's lighter bands */
+  background: oklch(0.97 0.005 50);
 }
 
-/* Metric chips inside an apple-tile */
+/* Big stat chips — Zomato-style oversized numerals */
 .metric-chip {
   display: flex;
   flex-direction: column;
@@ -570,32 +578,37 @@
   justify-content: center;
   text-align: center;
   height: 100%;
-  padding: 24px 18px;
-  border-radius: 20px;
-  background: oklch(0.97 0.004 240);
-  border: 1px solid oklch(0.18 0.04 260 / 0.06);
-  transition: background 250ms ease, transform 250ms ease;
+  padding: 28px 18px;
+  border-radius: 24px;
+  background: oklch(0.98 0.004 50);
+  border: 1px solid oklch(0.18 0.012 30 / 0.06);
+  transition: background 250ms ease, transform 250ms ease, box-shadow 250ms ease;
 }
-.metric-chip:hover { background: #ffffff; }
+.metric-chip:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -20px oklch(0.66 0.21 18 / 0.25);
+}
 .metric-chip-k {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(26px, 3.2vw, 40px);
-  letter-spacing: -0.035em;
+  font-weight: 800;
+  font-size: clamp(34px, 4.4vw, 56px);
+  letter-spacing: -0.05em;
   line-height: 1;
-  color: oklch(0.18 0.04 260);
+  color: oklch(0.18 0.012 30);
 }
 .metric-chip-v {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 12px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: oklch(0.42 0.02 260);
+  font-weight: 500;
+  color: oklch(0.45 0.012 30);
 }
 .apple-tile.is-dark .metric-chip {
   background: oklch(1 0 0 / 0.04);
   border-color: oklch(1 0 0 / 0.08);
 }
 .apple-tile.is-dark .metric-chip:hover { background: oklch(1 0 0 / 0.07); }
-.apple-tile.is-dark .metric-chip-k { color: oklch(0.98 0.005 240); }
-.apple-tile.is-dark .metric-chip-v { color: oklch(0.78 0.04 240 / 0.75); }
+.apple-tile.is-dark .metric-chip-k { color: oklch(0.985 0.005 60); }
+.apple-tile.is-dark .metric-chip-v { color: oklch(0.85 0.012 40 / 0.75); }
