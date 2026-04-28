@@ -844,7 +844,7 @@ function Footer() {
           <div className="md:col-span-3">
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-skyblue/50">Contact</p>
             <a href="https://wa.me/918168194134" className="block text-white/90 transition hover:text-signal">+91 81681 94134</a>
-            <a href="mailto:rkentra9005@gmail.com" className="mt-2 block transition hover:text-white">rkentra9005@gmail.com</a>
+            <a href="mailto:admin@coresoftsolutions.net" className="mt-2 block transition hover:text-white">admin@coresoftsolutions.net</a>
           </div>
           <div className="md:col-span-3">
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-skyblue/50">Follow</p>
